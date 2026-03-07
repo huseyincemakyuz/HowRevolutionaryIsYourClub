@@ -4,14 +4,21 @@ import { useEffect, useState } from "react"
 import { questions } from "@/lib/questions"
 import { calculateScore, ScoreResult } from "@/lib/scoring"
 import { getLevel } from "@/lib/levels"
-import { CategoryScores } from "@/types"
+import { translations } from "@/lib/translations"
+import LanguageToggle from "@/components/LanguageToggle"
+import { CategoryScores, Language } from "@/types"
 
 export default function Result() {
 
   const [result, setResult] = useState<ScoreResult | null>(null)
   const [error, setError] = useState<string | null>(null)
+  const [lang, setLang] = useState<Language>("en")
 
   useEffect(() => {
+    const storedLang = localStorage.getItem("lang")
+    if (storedLang === "tr" || storedLang === "en") {
+      setLang(storedLang)
+    }
 
     const stored = localStorage.getItem("answers")
 
@@ -22,7 +29,7 @@ export default function Result() {
     try {
       answers = JSON.parse(stored)
     } catch {
-      setError("Could not read saved answers. Please retake the quiz.")
+      setError("error")
       return
     }
 
@@ -37,23 +44,41 @@ export default function Result() {
       categoryScores[q.category] += answers[q.id] || 0
     })
 
-    const scoreData = calculateScore(categoryScores)
-
-    setResult(scoreData)
+    setResult(calculateScore(categoryScores))
 
   }, [])
 
-  if (error) return <div style={{ padding: 40, color: "red" }}>{error}</div>
+  const handleSetLang = (l: Language) => {
+    setLang(l)
+    localStorage.setItem("lang", l)
+  }
 
-  if (!result) return <div>Loading...</div>
+  if (error) return (
+    <div style={{ padding: 40 }}>
+      <LanguageToggle lang={lang} setLang={handleSetLang} />
+      <p style={{ color: "red", marginTop: 20 }}>{translations.errorAnswers[lang]}</p>
+      <a href="/quiz"><button style={{ marginTop: 10 }}>{translations.retake[lang]}</button></a>
+    </div>
+  )
+
+  if (!result) return (
+    <div style={{ padding: 40 }}>
+      <LanguageToggle lang={lang} setLang={handleSetLang} />
+      <p style={{ marginTop: 20 }}>{translations.loading[lang]}</p>
+    </div>
+  )
 
   return (
 
     <div style={{ padding: 40 }}>
 
-      <h1>Total Score: {result.total}</h1>
+      <LanguageToggle lang={lang} setLang={handleSetLang} />
+
+      <h1 style={{ marginTop: 20 }}>{translations.totalScore[lang]}: {result.total}</h1>
 
       <h2>{getLevel(result.total)}</h2>
+
+      <h3>{translations.breakdown[lang]}</h3>
 
       <pre>{JSON.stringify(result.breakdown, null, 2)}</pre>
 

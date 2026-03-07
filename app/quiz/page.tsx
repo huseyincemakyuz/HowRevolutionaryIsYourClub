@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import { questions } from "@/lib/questions";
 import QuestionCard from "@/components/QuestionCard";
+import LanguageToggle from "@/components/LanguageToggle";
+import { translations } from "@/lib/translations";
 import { useRouter } from "next/navigation";
 import { Language } from "@/types";
 
@@ -20,6 +22,11 @@ export default function Quiz() {
       setLang(stored)
     }
   }, [])
+
+  const handleSetLang = (l: Language) => {
+    setLang(l)
+    localStorage.setItem("lang", l)
+  }
 
   const question = questions[current]
 
@@ -41,6 +48,12 @@ export default function Quiz() {
   return (
 
     <div style={{ padding: 40 }}>
+
+      <LanguageToggle lang={lang} setLang={handleSetLang} />
+
+      <p style={{ color: "#666", marginTop: 16 }}>
+        {translations.question[lang]} {current + 1} / {questions.length}
+      </p>
 
       <QuestionCard
         question={question}

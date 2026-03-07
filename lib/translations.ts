@@ -27,5 +27,25 @@ export const translations = {
   breakdown: {
     tr: "Kategori Kırılımı",
     en: "Category Breakdown"
+  },
+
+  loading: {
+    tr: "Yükleniyor...",
+    en: "Loading..."
+  },
+
+  errorAnswers: {
+    tr: "Cevaplar okunamadı. Lütfen testi tekrar yapın.",
+    en: "Could not read saved answers. Please retake the quiz."
+  },
+
+  retake: {
+    tr: "Testi Tekrar Yap",
+    en: "Retake the Test"
+  },
+
+  question: {
+    tr: "Soru",
+    en: "Question"
   }
 };
