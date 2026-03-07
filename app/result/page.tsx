@@ -1,50 +1,61 @@
 "use client";
 
-import { useEffect,useState } from "react"
+import { useEffect, useState } from "react"
 import { questions } from "@/lib/questions"
-import { calculateScore } from "@/lib/scoring"
+import { calculateScore, ScoreResult } from "@/lib/scoring"
 import { getLevel } from "@/lib/levels"
+import { CategoryScores } from "@/types"
 
-export default function Result(){
+export default function Result() {
 
-  const [result,setResult] = useState<any>(null)
+  const [result, setResult] = useState<ScoreResult | null>(null)
+  const [error, setError] = useState<string | null>(null)
 
-  useEffect(()=>{
+  useEffect(() => {
 
     const stored = localStorage.getItem("answers")
 
-    if(!stored) return
+    if (!stored) return
 
-    const answers = JSON.parse(stored)
+    let answers: Record<number, number>
 
-    const categoryScores = {
-      hegemony:0,
-      rise:0,
-      sustain:0,
-      europe:0
+    try {
+      answers = JSON.parse(stored)
+    } catch {
+      setError("Could not read saved answers. Please retake the quiz.")
+      return
     }
 
-    questions.forEach(q=>{
-      categoryScores[q.category]+=answers[q.id] || 0
+    const categoryScores: CategoryScores = {
+      hegemony: 0,
+      rise: 0,
+      sustain: 0,
+      europe: 0
+    }
+
+    questions.forEach(q => {
+      categoryScores[q.category] += answers[q.id] || 0
     })
 
     const scoreData = calculateScore(categoryScores)
 
     setResult(scoreData)
 
-  },[])
+  }, [])
 
-  if(!result) return <div>Loading...</div>
+  if (error) return <div style={{ padding: 40, color: "red" }}>{error}</div>
 
-  return(
+  if (!result) return <div>Loading...</div>
 
-    <div style={{padding:40}}>
+  return (
+
+    <div style={{ padding: 40 }}>
 
       <h1>Total Score: {result.total}</h1>
 
       <h2>{getLevel(result.total)}</h2>
 
-      <pre>{JSON.stringify(result.breakdown,null,2)}</pre>
+      <pre>{JSON.stringify(result.breakdown, null, 2)}</pre>
 
     </div>
 

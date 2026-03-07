@@ -9,6 +9,10 @@ import { Language } from "@/types";
 export default function Home() {
   const [lang, setLang] = useState<Language>("en");
 
+  const handleStart = () => {
+    localStorage.setItem("lang", lang);
+  };
+
   return (
     <main style={{ padding: 40 }}>
       <LanguageToggle lang={lang} setLang={setLang} />
@@ -18,7 +22,7 @@ export default function Home() {
       <p>{translations.description[lang]}</p>
 
       <Link href="/quiz">
-        <button>{translations.start[lang]}</button>
+        <button onClick={handleStart}>{translations.start[lang]}</button>
       </Link>
     </main>
   );
