@@ -14,10 +14,20 @@ const maxValues = {
   europe: 10
 };
 
-export function calculateScore(scores: CategoryScores) {
+interface CategoryBreakdown {
+  normalized: number;
+  weighted: number;
+}
+
+export interface ScoreResult {
+  total: number;
+  breakdown: Record<keyof CategoryScores, CategoryBreakdown>;
+}
+
+export function calculateScore(scores: CategoryScores): ScoreResult {
   let total = 0;
 
-  const breakdown: any = {};
+  const breakdown = {} as Record<keyof CategoryScores, CategoryBreakdown>;
 
   (Object.keys(scores) as (keyof CategoryScores)[]).forEach((key) => {
     const normalized = scores[key] / maxValues[key];

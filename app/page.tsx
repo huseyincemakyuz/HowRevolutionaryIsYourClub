@@ -9,9 +9,14 @@ import { Language } from "@/types";
 export default function Home() {
   const [lang, setLang] = useState<Language>("en");
 
+  const handleSetLang = (l: Language) => {
+    setLang(l);
+    localStorage.setItem("lang", l);
+  };
+
   return (
     <main style={{ padding: 40 }}>
-      <LanguageToggle lang={lang} setLang={setLang} />
+      <LanguageToggle lang={lang} setLang={handleSetLang} />
 
       <h1>{translations.title[lang]}</h1>
       <h2>{translations.subtitle[lang]}</h2>
