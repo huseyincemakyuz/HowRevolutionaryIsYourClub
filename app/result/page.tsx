@@ -7,6 +7,7 @@ import { getLevel } from "@/lib/levels"
 import { translations } from "@/lib/translations"
 import { TS } from "@/lib/colors"
 import TopBar from "@/components/TopBar"
+import Footer from "@/components/Footer"
 import { CategoryScores, Language } from "@/types"
 
 const CATEGORY_ORDER: (keyof CategoryScores)[] = ["hegemony", "rise", "sustain", "europe"]
@@ -181,6 +182,8 @@ export default function Result() {
         </div>
 
       </div>
+
+      <Footer lang={lang} />
     </div>
   )
 }

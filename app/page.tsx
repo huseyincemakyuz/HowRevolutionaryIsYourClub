@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { translations } from "@/lib/translations";
 import TopBar from "@/components/TopBar";
+import Footer from "@/components/Footer";
 import { TS } from "@/lib/colors";
 import { Language } from "@/types";
 
@@ -111,6 +112,8 @@ export default function Home() {
         </Link>
 
       </div>
+
+      <Footer lang={lang} />
     </main>
   );
 }
