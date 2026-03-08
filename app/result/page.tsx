@@ -20,10 +20,14 @@ export default function Result() {
   const [error, setError] = useState<string | null>(null)
   const [lang, setLang] = useState<Language>("en")
   const [sharing, setSharing] = useState(false)
+  const [clubName, setClubName] = useState<string>("")
 
   useEffect(() => {
     const storedLang = localStorage.getItem("lang")
     if (storedLang === "tr" || storedLang === "en") setLang(storedLang as Language)
+
+    const storedClub = localStorage.getItem("clubName")
+    if (storedClub) setClubName(storedClub)
 
     const stored = localStorage.getItem("answers")
     if (!stored) return
@@ -50,7 +54,7 @@ export default function Result() {
     if (!result || sharing) return
     setSharing(true)
     try {
-      const blob = await generateShareImage(result, lang)
+      const blob = await generateShareImage(result, lang, clubName)
       const file = new File([blob], "tri-result.png", { type: "image/png" })
       if (navigator.canShare && navigator.canShare({ files: [file] })) {
         await navigator.share({ files: [file] })
@@ -110,7 +114,9 @@ export default function Result() {
             <span style={{ fontSize: "1.5rem", opacity: 0.6, fontWeight: 400 }}>/ 100</span>
           </div>
           <h2 style={{ margin: "10px 0 0", fontSize: "1.6rem", fontWeight: 700 }}>
-            {level.name[lang]}
+            {clubName
+              ? translations.resultHeadline[lang](clubName, level.name[lang])
+              : level.name[lang]}
           </h2>
         </div>
       </div>

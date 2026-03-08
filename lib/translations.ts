@@ -115,6 +115,26 @@ export const translations = {
     europe:   { en: "European Impact",              tr: "Avrupa Etkisi" }
   },
 
+  clubPrompt: {
+    en: "Enter your football club's name to begin",
+    tr: "Başlamak için futbol kulübünün adını gir"
+  },
+
+  clubPlaceholder: {
+    en: "e.g. Trabzonspor",
+    tr: "örn. Trabzonspor"
+  },
+
+  clubCta: {
+    en: "Start the Test",
+    tr: "Testi Başlat"
+  },
+
+  resultHeadline: {
+    en: (club: string, level: string) => `${club} is a ${level}`,
+    tr: (club: string, level: string) => `${club} — ${level}`
+  },
+
   share: {
     en: "Share Result",
     tr: "Sonucu Paylaş"

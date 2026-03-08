@@ -17,10 +17,14 @@ export default function Quiz() {
   const [answers, setAnswers] = useState<{ [key: number]: number }>({})
   const [current, setCurrent] = useState(0)
   const [lang, setLang] = useState<Language>("en")
+  const [step, setStep] = useState<"club" | "quiz">("club")
+  const [clubName, setClubName] = useState("")
 
   useEffect(() => {
     const stored = localStorage.getItem("lang")
     if (stored === "tr" || stored === "en") setLang(stored as Language)
+    const storedClub = localStorage.getItem("clubName")
+    if (storedClub) setClubName(storedClub)
   }, [])
 
   const handleSetLang = (l: Language) => {
@@ -30,6 +34,14 @@ export default function Quiz() {
 
   const question = questions[current]
   const progress = Math.round((current / questions.length) * 100)
+
+  const handleClubSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    const name = clubName.trim()
+    if (!name) return
+    localStorage.setItem("clubName", name)
+    setStep("quiz")
+  }
 
   const handleAnswer = (value: number) => {
     const updated = { ...answers, [question.id]: value }
@@ -41,6 +53,62 @@ export default function Quiz() {
       router.push("/result")
     }
   }
+
+  if (step === "club") return (
+    <div style={{ fontFamily: "Arial, sans-serif" }}>
+      <TopBar lang={lang} setLang={handleSetLang} />
+      <div style={{
+        minHeight: `calc(100vh - ${BAR_HEIGHT}px)`,
+        marginTop: BAR_HEIGHT,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: "32px 24px"
+      }}>
+        <div style={{ maxWidth: 480, width: "100%" }}>
+          <p style={{ fontSize: "1.1rem", fontWeight: 700, color: "#222", margin: "0 0 24px", lineHeight: 1.5 }}>
+            {translations.clubPrompt[lang]}
+          </p>
+          <form onSubmit={handleClubSubmit} style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+            <input
+              type="text"
+              value={clubName}
+              onChange={e => setClubName(e.target.value)}
+              placeholder={translations.clubPlaceholder[lang]}
+              maxLength={60}
+              autoFocus
+              style={{
+                padding: "14px 18px",
+                fontSize: "1.05rem",
+                border: `2px solid #D9D7D3`,
+                borderRadius: 8,
+                outline: "none",
+                fontFamily: "Arial, sans-serif",
+                color: "#111"
+              }}
+            />
+            <button
+              type="submit"
+              disabled={!clubName.trim()}
+              style={{
+                padding: "14px",
+                fontSize: "1rem",
+                fontWeight: 700,
+                background: clubName.trim() ? "#8B1527" : "#ccc",
+                color: "#fff",
+                border: "none",
+                borderRadius: 8,
+                cursor: clubName.trim() ? "pointer" : "default",
+                transition: "background 0.2s"
+              }}
+            >
+              {translations.clubCta[lang]}
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  )
 
   return (
     <div style={{ fontFamily: "Arial, sans-serif" }}>

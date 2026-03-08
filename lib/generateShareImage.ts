@@ -9,7 +9,7 @@ const BORDEAUX = "#8B1527"
 const BLUE = "#1B3F8F"
 const CATEGORIES: (keyof ScoreResult["breakdown"])[] = ["hegemony", "rise", "sustain", "europe"]
 
-export async function generateShareImage(result: ScoreResult, lang: Language): Promise<Blob> {
+export async function generateShareImage(result: ScoreResult, lang: Language, clubName = ""): Promise<Blob> {
   const canvas = document.createElement("canvas")
   canvas.width = W
   canvas.height = H
@@ -30,21 +30,31 @@ export async function generateShareImage(result: ScoreResult, lang: Language): P
 
   const level = getLevel(result.total)
 
+  // --- Club name (top, above score) ---
+  if (clubName) {
+    ctx.fillStyle = "rgba(255,255,255,0.7)"
+    ctx.font = `700 16px Arial, sans-serif`
+    ctx.fillText(clubName.toUpperCase(), 36, 52)
+  }
+
+  const scoreY = clubName ? 130 : 112
+  const levelY  = clubName ? 168 : 152
+
   // --- Score number ---
   ctx.fillStyle = "#fff"
   ctx.font = `800 80px Arial, sans-serif`
   const scoreW = ctx.measureText(String(result.total)).width
-  ctx.fillText(String(result.total), 36, 112)
+  ctx.fillText(String(result.total), 36, scoreY)
 
   // --- /100 (same baseline, smaller, dimmed) ---
   ctx.fillStyle = "rgba(255,255,255,0.45)"
   ctx.font = `400 28px Arial, sans-serif`
-  ctx.fillText("/ 100", 36 + scoreW + 8, 112)
+  ctx.fillText("/ 100", 36 + scoreW + 8, scoreY)
 
   // --- Level name ---
   ctx.fillStyle = "#fff"
-  ctx.font = `700 22px Arial, sans-serif`
-  wrapText(ctx, level.name[lang], 36, 152, 240, 28)
+  ctx.font = `700 20px Arial, sans-serif`
+  wrapText(ctx, level.name[lang], 36, levelY, 240, 26)
 
   // --- TRI label ---
   ctx.fillStyle = "rgba(255,255,255,0.55)"
