@@ -10,85 +10,62 @@ interface Props {
   setLang: (l: Language) => void;
 }
 
-const achievements = {
+/* ── Chronicle rows shown in the 1967-1984 table ── */
+const chronicle: { year: string; tr: string; en: string; tags?: ("title" | "cup" | "milestone")[] }[] = [
+  { year: "1967",    tr: "Trabzonspor kuruldu",                                               en: "Trabzonspor founded",                                               tags: ["milestone"] },
+  { year: "1974–75", tr: "Süper Lig'e yükseldi (kuruluştan 8 yıl sonra)",                    en: "Promoted to Süper Lig (8 years after founding)",                    tags: ["milestone"] },
+  { year: "1975–76", tr: "Süper Lig'e ilk tam sezon — ŞAMPİYON",                             en: "First full Süper Lig season — CHAMPIONS",                           tags: ["title"] },
+  { year: "1976–77", tr: "Üst üste ikinci şampiyonluk · Türkiye Kupası",                     en: "Back-to-back title · Turkish Cup",                                  tags: ["title", "cup"] },
+  { year: "1977–78", tr: "Türkiye Kupası",                                                    en: "Turkish Cup",                                                       tags: ["cup"] },
+  { year: "1978–79", tr: "ŞAMPİYON — 3. lig kupası",                                         en: "CHAMPIONS — 3rd league title",                                      tags: ["title"] },
+  { year: "1979–80", tr: "ŞAMPİYON — 4. lig kupası",                                         en: "CHAMPIONS — 4th league title",                                      tags: ["title"] },
+  { year: "1980–81", tr: "ŞAMPİYON — 5. lig kupası",                                         en: "CHAMPIONS — 5th league title",                                      tags: ["title"] },
+  { year: "1981–84", tr: "Ligde mücadele, final: 1983–84 ŞAMPİYON · Türkiye Kupası",        en: "Intense competition, culminating: 1983–84 CHAMPIONS · Turkish Cup", tags: ["title", "cup"] },
+];
+
+const tagStyle: Record<string, { bg: string; label: { tr: string; en: string } }> = {
+  title:     { bg: TS.bordeaux, label: { tr: "ŞAMPİYON",  en: "TITLE"  } },
+  cup:       { bg: TS.blue,     label: { tr: "KUPA",       en: "CUP"    } },
+  milestone: { bg: "#555",      label: { tr: "DÖNÜM",      en: "MILESTONE" } },
+};
+
+const modal = {
   title: {
-    tr: "Trabzonspor'un Başarıları",
-    en: "Trabzonspor's Achievements"
+    tr: "Trabzonspor'u Tanıyalım",
+    en: "Meet Trabzonspor"
+  },
+  subtitle: {
+    tr: "1967'den 1984'e: Bir Anadolu Devrimi",
+    en: "1967 to 1984: An Anatolian Revolution"
   },
   intro: {
-    tr: "Trabzonspor, Türk futbolunda İstanbul kulüplerinin mutlak hegemonyasını kıran tek Anadolu kulübüdür. 1975'ten bu yana yazdığı tarih, bu endeksin ilham kaynağıdır.",
-    en: "Trabzonspor is the only Anatolian club to have repeatedly broken the absolute hegemony of Istanbul clubs in Turkish football. Its history since 1975 is the very inspiration behind this index."
+    tr: "Trabzonspor 1967 yılında Trabzon'da kuruldu. Türkiye'nin doğusundan gelen, kaynakları kısıtlı, İstanbul'dan uzakta bir kulüp. Ancak Türk futbolunun güç haritasını tamamen değiştirdi.",
+    en: "Trabzonspor was founded in 1967 in Trabzon — a city in eastern Turkey, far from Istanbul, with limited resources. Yet it went on to completely redraw the power map of Turkish football."
   },
-  sections: {
-    tr: [
-      {
-        heading: "Süper Lig Şampiyonlukları — 7 Kez",
-        items: [
-          "1975–76 · 1976–77 · Üst üste iki şampiyonluk, İstanbul'a ilk meydan okuma",
-          "1978–79 · 1979–80 · 1980–81 · Üç yılda üç kupa, Türk futbolunun dengeleri alt üst oldu",
-          "1983–84 ve 1987–88 · Hakimiyetin pekiştirilmesi",
-          "2021–22 · 38 yıllık suskunluğun ardından tarihi şampiyonluk; Galatasaray, Fenerbahçe ve Beşiktaş'ın monopolünü kıran son ve en büyük devrim"
-        ]
-      },
-      {
-        heading: "Türkiye Kupası — 9 Kez",
-        items: [
-          "1977, 1978, 1984, 1992, 1995, 2003, 2004, 2010, 2022",
-          "Ligde şampiyonluğun yanında kupalarda da sürekli varlık"
-        ]
-      },
-      {
-        heading: "Avrupa'da İz",
-        items: [
-          "UEFA Kupası 2010–11: Çeyrek finale yükseldi, büyük Avrupa kulüpleriyle kapıştı",
-          "1980'lerde Şampiyonlar Kupası ve UEFA Kupası'nda Türk futbolunu temsil etti",
-          "Avrupa arenasında İstanbul dışından çıkan ilk kalıcı güç"
-        ]
-      },
-      {
-        heading: "Devrimci Kimlik",
-        items: [
-          "İstanbul dışından çıkmış, ligde en çok şampiyonluk kazanmış ilk ve tek Anadolu kulübü",
-          "1970'lerde sıfırdan inşa edilen altyapı ile Türk futboluna model oldu",
-          "Bu endeks, bir kulübün devrimci gücünü ölçerken Trabzonspor'u referans alır"
-        ]
-      }
-    ],
-    en: [
-      {
-        heading: "Süper Lig Championships — 7 Times",
-        items: [
-          "1975–76 · 1976–77 · Back-to-back titles, the first real challenge to Istanbul's monopoly",
-          "1978–79 · 1979–80 · 1980–81 · Three titles in three years, reshaping Turkish football's power structure",
-          "1983–84 and 1987–88 · Cementing long-term dominance",
-          "2021–22 · A historic title after 38 years of silence — the greatest revolution, ending the monopoly of Galatasaray, Fenerbahçe, and Beşiktaş"
-        ]
-      },
-      {
-        heading: "Turkish Cup — 9 Times",
-        items: [
-          "1977, 1978, 1984, 1992, 1995, 2003, 2004, 2010, 2022",
-          "Consistent domestic cup presence alongside league dominance"
-        ]
-      },
-      {
-        heading: "European Footprint",
-        items: [
-          "UEFA Cup 2010–11: Reached the quarter-finals, competing against Europe's elite",
-          "Represented Turkish football in the European Cup and UEFA Cup throughout the 1980s",
-          "The first lasting power outside Istanbul to make a mark on European stages"
-        ]
-      },
-      {
-        heading: "A Revolutionary Identity",
-        items: [
-          "The first and only Anatolian club to repeatedly break Istanbul's grip on the Süper Lig",
-          "Built an academy from scratch in the 1970s that became a model for Turkish football",
-          "This index uses Trabzonspor as its reference point for measuring revolutionary power"
-        ]
-      }
-    ]
-  }
+  tableTitle: {
+    tr: "1967–1984 Kronoloji",
+    en: "1967–1984 Chronicle"
+  },
+  summary: {
+    tr: "1984 itibarıyla tablo: Süper Lig'e çıktıktan yaklaşık 10 yıl içinde 6 lig şampiyonluğu ve 3 Türkiye Kupası. İstanbul'un 'Büyük Üçlü'sü bu dönemde kendi liğinde yabancı oldu.",
+    en: "By 1984: in roughly 10 years in the Süper Lig, Trabzonspor had won 6 league titles and 3 Turkish Cups. Istanbul's 'Big Three' became strangers to their own league in this era."
+  },
+  after: {
+    heading: { tr: "Sonrası", en: "What Came After" },
+    items: {
+      tr: [
+        "1987–88 · Yedinci şampiyonluk",
+        "2010–11 · UEFA Avrupa Ligi çeyrek finali — Avrupa sahnesinde Anadolu sesi",
+        "2021–22 · 38 yıllık suskunluğun ardından tarihi dönüş: Galatasaray, Fenerbahçe ve Beşiktaş monopolüne son — Türk futbolunun en büyük devrimci anı"
+      ],
+      en: [
+        "1987–88 · Seventh championship",
+        "2010–11 · UEFA Europa League quarter-finals — an Anatolian voice on the European stage",
+        "2021–22 · Historic return after 38 years of silence: ending the monopoly of Galatasaray, Fenerbahçe, and Beşiktaş — the greatest revolutionary moment in Turkish football history"
+      ]
+    }
+  },
+  close: { tr: "Kapat", en: "Close" }
 };
 
 export default function TopBar({ lang, setLang }: Props) {
@@ -128,7 +105,7 @@ export default function TopBar({ lang, setLang }: Props) {
               whiteSpace: "nowrap"
             }}
           >
-            {lang === "tr" ? "★ Başarılar" : "★ Achievements"}
+            {lang === "tr" ? "★ Trabzonspor'u Tanı" : "★ Meet Trabzonspor"}
           </button>
 
           {/* Language toggle */}
@@ -156,7 +133,7 @@ export default function TopBar({ lang, setLang }: Props) {
         </div>
       </div>
 
-      {/* Achievements Modal */}
+      {/* Modal */}
       {open && (
         <div
           onClick={() => setOpen(false)}
@@ -164,11 +141,11 @@ export default function TopBar({ lang, setLang }: Props) {
             position: "fixed",
             inset: 0,
             zIndex: 200,
-            background: "rgba(0,0,0,0.55)",
+            background: "rgba(0,0,0,0.6)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            padding: 24
+            padding: 20
           }}
         >
           <div
@@ -176,72 +153,140 @@ export default function TopBar({ lang, setLang }: Props) {
             style={{
               background: "#fff",
               borderRadius: 12,
-              maxWidth: 620,
+              maxWidth: 640,
               width: "100%",
-              maxHeight: "85vh",
+              maxHeight: "90vh",
               overflowY: "auto",
-              boxShadow: "0 24px 64px rgba(0,0,0,0.25)"
+              boxShadow: "0 28px 72px rgba(0,0,0,0.3)"
             }}
           >
-            {/* Modal header */}
+            {/* Header */}
             <div style={{
               background: `linear-gradient(135deg, ${TS.bordeaux} 0%, ${TS.blue} 100%)`,
-              padding: "20px 24px",
+              padding: "22px 24px 18px",
               borderRadius: "12px 12px 0 0",
               display: "flex",
               justifyContent: "space-between",
-              alignItems: "center"
+              alignItems: "flex-start"
             }}>
-              <h2 style={{ margin: 0, color: "#fff", fontSize: "1.1rem", fontWeight: 800 }}>
-                {achievements.title[lang]}
-              </h2>
+              <div>
+                <h2 style={{ margin: "0 0 4px", color: "#fff", fontSize: "1.15rem", fontWeight: 800 }}>
+                  {modal.title[lang]}
+                </h2>
+                <p style={{ margin: 0, color: "rgba(255,255,255,0.75)", fontSize: "0.82rem", letterSpacing: "0.06em", textTransform: "uppercase" }}>
+                  {modal.subtitle[lang]}
+                </p>
+              </div>
               <button
                 onClick={() => setOpen(false)}
                 style={{
-                  background: "rgba(255,255,255,0.2)",
-                  border: "none",
-                  color: "#fff",
-                  fontSize: "1.1rem",
-                  width: 32, height: 32,
-                  borderRadius: "50%",
-                  cursor: "pointer",
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  fontWeight: 700
+                  background: "rgba(255,255,255,0.2)", border: "none", color: "#fff",
+                  fontSize: "1.15rem", width: 32, height: 32, borderRadius: "50%",
+                  cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center",
+                  fontWeight: 700, flexShrink: 0, marginLeft: 12
                 }}
-              >
-                ×
-              </button>
+              >×</button>
             </div>
 
-            {/* Modal body */}
+            {/* Body */}
             <div style={{ padding: "24px 24px 28px" }}>
-              <p style={{ margin: "0 0 24px", color: "#444", lineHeight: 1.7, fontSize: "0.95rem" }}>
-                {achievements.intro[lang]}
+
+              {/* Intro paragraph */}
+              <p style={{ margin: "0 0 24px", color: "#444", lineHeight: 1.75, fontSize: "0.95rem" }}>
+                {modal.intro[lang]}
               </p>
 
-              {achievements.sections[lang].map((section, si) => (
-                <div key={si} style={{ marginBottom: si < achievements.sections[lang].length - 1 ? 24 : 0 }}>
-                  <h3 style={{
-                    margin: "0 0 10px",
-                    fontSize: "0.85rem",
-                    fontWeight: 800,
-                    textTransform: "uppercase",
-                    letterSpacing: "0.07em",
-                    color: TS.bordeaux,
-                    borderBottom: `2px solid ${TS.light}`,
-                    paddingBottom: 6
-                  }}>
-                    {section.heading}
-                  </h3>
-                  <ul style={{ margin: 0, paddingLeft: 18, display: "flex", flexDirection: "column", gap: 7 }}>
-                    {section.items.map((item, ii) => (
-                      <li key={ii} style={{ color: "#333", fontSize: "0.9rem", lineHeight: 1.6 }}>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
+              {/* Chronicle table */}
+              <div style={{ marginBottom: 24 }}>
+                <div style={{
+                  fontSize: "0.75rem", fontWeight: 800, textTransform: "uppercase",
+                  letterSpacing: "0.1em", color: TS.bordeaux, marginBottom: 12,
+                  borderBottom: `2px solid ${TS.light}`, paddingBottom: 6
+                }}>
+                  {modal.tableTitle[lang]}
                 </div>
-              ))}
+
+                <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
+                  {chronicle.map((row, i) => (
+                    <div key={i} style={{
+                      display: "flex",
+                      alignItems: "baseline",
+                      gap: 12,
+                      padding: "9px 10px",
+                      background: i % 2 === 0 ? "#fafafa" : "#fff",
+                      borderRadius: 4
+                    }}>
+                      {/* Year */}
+                      <span style={{
+                        fontSize: "0.78rem",
+                        fontWeight: 800,
+                        color: "#999",
+                        minWidth: 62,
+                        flexShrink: 0,
+                        letterSpacing: "0.03em"
+                      }}>
+                        {row.year}
+                      </span>
+
+                      {/* Description */}
+                      <span style={{ fontSize: "0.88rem", color: "#333", lineHeight: 1.5, flex: 1 }}>
+                        {row[lang]}
+                      </span>
+
+                      {/* Tags */}
+                      {row.tags && (
+                        <div style={{ display: "flex", gap: 4, flexShrink: 0 }}>
+                          {row.tags.map(tag => (
+                            <span key={tag} style={{
+                              background: tagStyle[tag].bg,
+                              color: "#fff",
+                              fontSize: "0.65rem",
+                              fontWeight: 800,
+                              letterSpacing: "0.06em",
+                              padding: "2px 7px",
+                              borderRadius: 99
+                            }}>
+                              {tagStyle[tag].label[lang]}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Summary box */}
+              <div style={{
+                background: `linear-gradient(135deg, ${TS.bordeaux}12 0%, ${TS.blue}12 100%)`,
+                border: `2px solid ${TS.bordeaux}`,
+                borderRadius: 8,
+                padding: "14px 16px",
+                marginBottom: 24
+              }}>
+                <p style={{ margin: 0, fontSize: "0.88rem", color: "#222", lineHeight: 1.65, fontWeight: 600 }}>
+                  {modal.summary[lang]}
+                </p>
+              </div>
+
+              {/* After 1984 */}
+              <div>
+                <div style={{
+                  fontSize: "0.75rem", fontWeight: 800, textTransform: "uppercase",
+                  letterSpacing: "0.1em", color: TS.blue, marginBottom: 12,
+                  borderBottom: `2px solid ${TS.light}`, paddingBottom: 6
+                }}>
+                  {modal.after.heading[lang]}
+                </div>
+                <ul style={{ margin: 0, paddingLeft: 18, display: "flex", flexDirection: "column", gap: 9 }}>
+                  {modal.after.items[lang].map((item, i) => (
+                    <li key={i} style={{ fontSize: "0.9rem", color: "#333", lineHeight: 1.6 }}>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
             </div>
           </div>
         </div>
