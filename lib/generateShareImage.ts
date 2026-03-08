@@ -33,17 +33,18 @@ export async function generateShareImage(result: ScoreResult, lang: Language): P
   // --- Score number ---
   ctx.fillStyle = "#fff"
   ctx.font = `800 80px Arial, sans-serif`
+  const scoreW = ctx.measureText(String(result.total)).width
   ctx.fillText(String(result.total), 36, 112)
 
-  // --- /100 ---
-  ctx.fillStyle = "rgba(255,255,255,0.5)"
-  ctx.font = `400 26px Arial, sans-serif`
-  ctx.fillText("/ 100", 36 + ctx.measureText(String(result.total)).width + 10, 104)
+  // --- /100 (same baseline, smaller, dimmed) ---
+  ctx.fillStyle = "rgba(255,255,255,0.45)"
+  ctx.font = `400 28px Arial, sans-serif`
+  ctx.fillText("/ 100", 36 + scoreW + 8, 112)
 
   // --- Level name ---
   ctx.fillStyle = "#fff"
   ctx.font = `700 22px Arial, sans-serif`
-  wrapText(ctx, level.name[lang], 36, 148, 240, 28)
+  wrapText(ctx, level.name[lang], 36, 152, 240, 28)
 
   // --- TRI label ---
   ctx.fillStyle = "rgba(255,255,255,0.55)"
