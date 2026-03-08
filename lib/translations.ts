@@ -98,6 +98,11 @@ export const translations = {
     tr: "Testi Tekrar Yap"
   },
 
+  home: {
+    en: "Back to Home",
+    tr: "Ana Sayfaya Dön"
+  },
+
   question: {
     en: "Question",
     tr: "Soru"

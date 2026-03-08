@@ -127,7 +127,7 @@ export default function Result() {
         })}
       </div>
 
-      <div style={{ marginTop: 36 }}>
+      <div style={{ marginTop: 36, display: "flex", gap: 12 }}>
         <a href="/quiz">
           <button style={{
             padding: "12px 28px",
@@ -140,6 +140,20 @@ export default function Result() {
             cursor: "pointer"
           }}>
             {translations.retake[lang]}
+          </button>
+        </a>
+        <a href="/">
+          <button style={{
+            padding: "12px 28px",
+            fontSize: "0.95rem",
+            fontWeight: 600,
+            background: "#fff",
+            color: "#111",
+            border: "2px solid #111",
+            borderRadius: 6,
+            cursor: "pointer"
+          }}>
+            {translations.home[lang]}
           </button>
         </a>
       </div>
