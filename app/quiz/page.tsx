@@ -91,7 +91,7 @@ export default function Quiz() {
               {progress}%
             </span>
           </div>
-          <div style={{ height: 7, background: "#e5e5e5", borderRadius: 99 }}>
+          <div style={{ height: 7, background: TS.light, borderRadius: 99 }}>
             <div style={{
               height: "100%",
               width: `${progress}%`,

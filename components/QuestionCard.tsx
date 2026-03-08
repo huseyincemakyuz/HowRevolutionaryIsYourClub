@@ -28,9 +28,9 @@ export default function QuestionCard({ question, lang, onAnswer }: Props) {
             textAlign: "left",
             fontSize: "0.95rem",
             cursor: "pointer",
-            background: "#fff",
+            background: TS.bg,
             color: "#222",
-            border: `1.5px solid #ddd`,
+            border: `1.5px solid ${TS.border}`,
             borderRadius: 8,
             transition: "border-color 0.15s, background 0.15s"
           }}
@@ -39,8 +39,8 @@ export default function QuestionCard({ question, lang, onAnswer }: Props) {
             (e.currentTarget as HTMLButtonElement).style.background = "#faf5f6";
           }}
           onMouseLeave={e => {
-            (e.currentTarget as HTMLButtonElement).style.borderColor = "#ddd";
-            (e.currentTarget as HTMLButtonElement).style.background = "#fff";
+            (e.currentTarget as HTMLButtonElement).style.borderColor = TS.border;
+            (e.currentTarget as HTMLButtonElement).style.background = TS.bg;
           }}
         >
           {option.label[lang]}

@@ -131,7 +131,7 @@ export default function Result() {
         <p style={{
           margin: "0 0 36px",
           padding: "16px 20px",
-          background: "#faf5f6",
+          background: TS.light,
           borderLeft: `4px solid ${TS.bordeaux}`,
           borderRadius: 4,
           fontSize: "1rem",
@@ -167,7 +167,7 @@ export default function Result() {
                     {cat.normalized}%
                   </span>
                 </div>
-                <div style={{ height: 8, background: "#ebebeb", borderRadius: 99 }}>
+                <div style={{ height: 8, background: TS.light, borderRadius: 99 }}>
                   <div style={{
                     height: "100%",
                     width: `${cat.normalized}%`,
@@ -202,7 +202,7 @@ export default function Result() {
               padding: "12px 28px",
               fontSize: "0.95rem",
               fontWeight: 700,
-              background: "#fff",
+              background: TS.bg,
               color: TS.blue,
               border: `2px solid ${TS.blue}`,
               borderRadius: 6,
