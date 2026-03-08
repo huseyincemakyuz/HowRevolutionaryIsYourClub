@@ -10,13 +10,15 @@ interface Props {
   setLang: (l: Language) => void;
 }
 
-/* ── Static data ── */
+/* ────────────────────────────────────────────────
+   Static data
+──────────────────────────────────────────────── */
 
 const hegemony1959: { club: { tr: string; en: string }; titles: number }[] = [
-  { club: { tr: "Fenerbahçe",       en: "Fenerbahçe"       }, titles: 9 },
-  { club: { tr: "Galatasaray",      en: "Galatasaray"      }, titles: 6 },
-  { club: { tr: "Beşiktaş",        en: "Beşiktaş"         }, titles: 5 },
-  { club: { tr: "Anadolu Kulüpleri", en: "Anatolian Clubs" }, titles: 0 },
+  { club: { tr: "Fenerbahçe",        en: "Fenerbahçe"       }, titles: 9 },
+  { club: { tr: "Galatasaray",       en: "Galatasaray"      }, titles: 6 },
+  { club: { tr: "Beşiktaş",         en: "Beşiktaş"         }, titles: 5 },
+  { club: { tr: "Anadolu Kulüpleri", en: "Anatolian Clubs"  }, titles: 0 },
 ];
 
 const seasons1976: { season: string; champion: { tr: string; en: string }; isTS: boolean }[] = [
@@ -39,19 +41,26 @@ const dist1976: { club: string; titles: number; isTS: boolean }[] = [
 ];
 
 const cups1976 = {
-  tr: {
-    turkish:       ["1976–77", "1977–78", "1983–84"],
-    presidential:  ["1976", "1977", "1978", "1979", "1980", "1983"],
-  },
-  en: {
-    turkish:       ["1976–77", "1977–78", "1983–84"],
-    presidential:  ["1976", "1977", "1978", "1979", "1980", "1983"],
-  }
+  turkish:      ["1976–77", "1977–78", "1983–84"],
+  presidential: ["1976", "1977", "1978", "1979", "1980", "1983"],
 };
 
+const dist1984: { club: string; titles: number; isTS: boolean }[] = [
+  { club: "Fenerbahçe",  titles: 11, isTS: false },
+  { club: "Trabzonspor", titles: 6,  isTS: true  },
+  { club: "Galatasaray", titles: 6,  isTS: false },
+  { club: "Beşiktaş",   titles: 6,  isTS: false },
+];
+
+/* European wins 1976–1984 */
 const euroWins: {
-  opponent: string; competition: { tr: string; en: string };
-  season: string; score: string; note: { tr: string; en: string };
+  opponent: string;
+  competition: { tr: string; en: string };
+  season: string;
+  score: string;
+  venue?: string;
+  scorer?: string;
+  note: { tr: string; en: string };
 }[] = [
   {
     opponent: "Liverpool FC",
@@ -60,7 +69,7 @@ const euroWins: {
     score: "1–0",
     note: {
       tr: "O sezon Avrupa Kupası'nı kazanan Liverpool'u yenen ilk Türk takımı",
-      en: "First Turkish club to defeat Liverpool, who won the European Cup that same season"
+      en: "First Turkish club to defeat Liverpool, who won the European Cup that very same season"
     }
   },
   {
@@ -70,7 +79,7 @@ const euroWins: {
     score: "1–0",
     note: {
       tr: "Barcelona'yı mağlup eden ilk Türk takımı",
-      en: "First Turkish club to defeat Barcelona"
+      en: "First Turkish club to defeat FC Barcelona"
     }
   },
   {
@@ -85,84 +94,126 @@ const euroWins: {
   },
 ];
 
-const dist1984: { club: string; titles: number; isTS: boolean }[] = [
-  { club: "Fenerbahçe",  titles: 11, isTS: false },
-  { club: "Trabzonspor", titles: 6,  isTS: true  },
-  { club: "Galatasaray", titles: 6,  isTS: false },
-  { club: "Beşiktaş",   titles: 6,  isTS: false },
+/* Post-1984 cups */
+const cupsAfter1984 = {
+  turkish:   ["1991–92", "1994–95", "2002–03", "2003–04", "2009–10", "2019–20"],
+  superCup:  ["1995", "2010", "2020", "2022"],
+};
+
+/* San Siro result */
+const sanSiro = {
+  competition: { tr: "UEFA Şampiyonlar Ligi", en: "UEFA Champions League" },
+  season: "2011–12",
+  venue: "San Siro, Milano",
+  score: "0–1",
+  scorer: "Halil Altıntop",
+};
+
+/* All 8 titles */
+const allTitles: { season: string }[] = [
+  { season: "1975–76" },
+  { season: "1976–77" },
+  { season: "1978–79" },
+  { season: "1979–80" },
+  { season: "1980–81" },
+  { season: "1983–84" },
+  { season: "2010–11" },
+  { season: "2021–22" },
 ];
 
-/* ── Text strings ── */
+/* ────────────────────────────────────────────────
+   Text strings
+──────────────────────────────────────────────── */
 const t = {
-  modalTitle:   { tr: "Trabzonspor'u Tanıyalım",         en: "Meet Trabzonspor"                 },
-  modalSub:     { tr: "Bir Anadolu Devrimi",              en: "An Anatolian Revolution"           },
-  sec1Title:    { tr: "1959–1974: İstanbul Hegemonyası",  en: "1959–1974: Istanbul Hegemony"      },
-  sec1Body:     {
+  modalTitle:    { tr: "Trabzonspor'u Tanıyalım",          en: "Meet Trabzonspor"                  },
+  modalSub:      { tr: "Bir Anadolu Devrimi",               en: "An Anatolian Revolution"            },
+
+  sec1Title:     { tr: "1959–1974: İstanbul Hegemonyası",   en: "1959–1974: Istanbul Hegemony"       },
+  sec1Body:      {
     tr: "Türkiye 1. Ligi 1959'da kuruldu. 1974'e kadar geçen 16 sezonda şampiyonlukların tamamı İstanbul kulüplerine gitti. Bu dönemde Anadolu'dan hiçbir kulüp şampiyon olamadı.",
     en: "The Turkish First Division was founded in 1959. Over the 16 seasons until 1974, every single league title went to an Istanbul club. No Anatolian club was able to win the championship during this period."
   },
-  sec1TableNote: {
-    tr: "1959–1974 Şampiyonluk Dağılımı",
-    en: "1959–1974 Title Distribution"
-  },
-  sec2Title:    { tr: "Trabzonspor'un Yükselişi",          en: "Trabzonspor's Rise"               },
-  sec2Body:     {
+  sec1TableNote: { tr: "1959–1974 Şampiyonluk Dağılımı",   en: "1959–1974 Title Distribution"       },
+
+  sec2Title:     { tr: "Trabzonspor'un Yükselişi",          en: "Trabzonspor's Rise"                 },
+  sec2Body:      {
     tr: "Trabzonspor 1974–75 sezonunda Türkiye 1. Ligi'ne yükseldi. Yalnızca bir sezon sonra, 1975–76'da şampiyon oldu ve Türk futbol tarihinde yeni bir dönemi başlattı.",
     en: "Trabzonspor was promoted to the Turkish First Division in the 1974–75 season. Just one season later, in 1975–76, they became champions — opening a new chapter in Turkish football history."
   },
-  sec3Title:    { tr: "1976–1984: Hegemonyanın Kırılması", en: "1976–1984: Breaking the Hegemony" },
-  sec3Body:     {
+
+  sec3Title:     { tr: "1976–1984: Hegemonyanın Kırılması", en: "1976–1984: Breaking the Hegemony"  },
+  sec3Body:      {
     tr: "Trabzonspor, ligdeki ilk 10 yılında 6 lig şampiyonluğu kazandı. İşte o dönemin sezon sezon tablosu:",
     en: "In their first 10 years in the top flight, Trabzonspor won 6 league titles. Here is the season-by-season breakdown:"
   },
-  sec3TableNote: {
-    tr: "1976–1984 Şampiyonluk Dağılımı",
-    en: "1976–1984 Title Distribution"
-  },
-  sec4Title:    { tr: "1976–1984 Arasında Kazanılan Kupalar", en: "Cups Won 1976–1984" },
-  cupTurkish:   { tr: "Türkiye Kupası",                       en: "Turkish Cup"        },
-  cupPresid:    { tr: "Cumhurbaşkanlığı Kupası (Süper Kupa)", en: "Presidential Cup (Super Cup)" },
-  sec5Title:    { tr: "1984 İtibarıyla Toplam Lig Şampiyonlukları", en: "All-Time League Titles as of 1984" },
-  sec5Body:     {
+  sec3TableNote: { tr: "1976–1984 Şampiyonluk Dağılımı",   en: "1976–1984 Title Distribution"       },
+
+  sec4Title:     { tr: "1976–1984 Arasında Kazanılan Kupalar", en: "Cups Won 1976–1984"              },
+  cupTurkish:    { tr: "Türkiye Kupası",                     en: "Turkish Cup"                        },
+  cupPresid:     { tr: "Cumhurbaşkanlığı Kupası (Süper Kupa)", en: "Presidential Cup (Super Cup)"    },
+
+  sec5Title:     { tr: "1984 İtibarıyla Toplam Lig Şampiyonlukları", en: "All-Time League Titles as of 1984" },
+  sec5Body:      {
     tr: "1984 sezonu sonunda Türkiye ligi tarihindeki toplam sıralama — Trabzonspor yalnızca 10 yılda köklü İstanbul kulüpleriyle aynı seviyeye ulaşmıştı:",
     en: "After the 1984 season, the all-time standings — Trabzonspor had reached the same level as Istanbul's most historic clubs in just 10 years:"
   },
-  closing:      {
+
+  closing:       {
     tr: "Bu nedenle Trabzonspor'un yükselişi, Türk futbol tarihinde en güçlü sistem kırıcı örneklerden biri olarak kabul edilir — ve bu endeksin ilham kaynağıdır.",
     en: "For this reason, Trabzonspor's rise is considered one of the most powerful system-breaking examples in Turkish football history — and the inspiration behind this index."
   },
-  after:        { tr: "Sonrası",                             en: "What Came After"     },
-  afterItems: {
-    tr: [
-      "1987–88 · Yedinci lig şampiyonluğu",
-      "2010–11 · UEFA Avrupa Ligi çeyrek finali",
-      "2021–22 · 38 yıllık aradan sonra şampiyonluk — Büyük Üçlü monopolüne son"
-    ],
-    en: [
-      "1987–88 · Seventh league championship",
-      "2010–11 · UEFA Europa League quarter-finals",
-      "2021–22 · Champions after 38 years — ending the Big Three's monopoly"
-    ]
+
+  secEuroTitle:  {
+    tr: "Avrupa Devlerine Karşı Tarihi Galibiyetler (1976–1984)",
+    en: "Historic Wins Against European Giants (1976–1984)"
   },
-  sec6Title: {
-    tr: "Avrupa Devlerine Karşı Tarihi Galibiyetler",
-    en: "Historic Wins Against European Giants"
+  secEuroBody:   {
+    tr: "Bu dönemde İstanbul'un büyük kulüpleri Avrupa'da bu galibiyetleri elde edemezken, Trabzonspor kıtanın en güçlü takımlarını yendi ve Türk futbolunda ilkler yaşandı:",
+    en: "While Istanbul's major clubs could not achieve such results in Europe at the time, Trabzonspor defeated the continent's strongest sides — setting multiple firsts for Turkish football:"
   },
-  sec6Body: {
-    tr: "Bu dönemde İstanbul'un büyük kulüpleri Avrupa'da bu galibiyetleri elde edemezken, Trabzonspor sahaya çıktığı Avrupa kupalarında kıtanın en güçlü takımlarını yendi ve Türk futbolunda ilkler yaşandı:",
-    en: "While Istanbul's major clubs could not achieve such results in Europe at the time, Trabzonspor went out and defeated the continent's strongest sides — setting multiple firsts for Turkish football:"
+
+  secAfterTitle: { tr: "1984 Sonrası: Rekabetin Devamı",   en: "After 1984: Continued Competition"  },
+  secAfterBody:  {
+    tr: "Trabzonspor 1984 sonrasında da Türk futbolunun en güçlü kulüplerinden biri olarak rekabetçi kalmaya devam etti. Lig şampiyonluğu dışında birçok ulusal kupa kazandı ve Avrupa kupalarında düzenli olarak yer aldı.",
+    en: "After 1984, Trabzonspor continued to be one of the strongest clubs in Turkish football — winning multiple national cups and regularly competing in European competitions."
   },
-  euroOpponent: { tr: "Rakip",      en: "Opponent"    },
-  euroComp:     { tr: "Turnuva",    en: "Competition" },
-  euroSeason:   { tr: "Sezon",      en: "Season"      },
-  euroScore:    { tr: "Skor",       en: "Score"       },
-  clubCol:   { tr: "Kulüp",         en: "Club"         },
-  titlesCol: { tr: "Şampiyonluk",   en: "Titles"       },
-  seasonCol: { tr: "Sezon",         en: "Season"       },
-  champCol:  { tr: "Şampiyon",      en: "Champion"     },
+  cupsAfterLabel: { tr: "1984 Sonrası Kazanılan Kupalar",  en: "Cups Won After 1984"                 },
+  superCupLabel:  { tr: "Süper Kupa / Cumhurbaşkanlığı Kupası", en: "Super Cup / Presidential Cup"  },
+
+  sec2011Title:  { tr: "2010–11 Sezonu",                   en: "The 2010–11 Season"                  },
+  sec2011Body:   {
+    tr: "Trabzonspor sezonu 82 puanla tamamladı ve aynı puanı alan Fenerbahçe ile zirveyi paylaştı. Sezon sonrası yaşanan şike soruşturmaları nedeniyle bu dönem Türk futbol tarihinin en tartışmalı sezonlarından biri olarak anılmaktadır. Soruşturma sonucunda Fenerbahçe UEFA Şampiyonlar Ligi'nden men edildi ve Türkiye'yi 2011–12 Şampiyonlar Ligi'nde Trabzonspor temsil etti.",
+    en: "Trabzonspor finished the season with 82 points, level with Fenerbahçe at the top. The post-season match-fixing investigations made this one of the most controversial seasons in Turkish football history. As a result, Fenerbahçe was banned from the UEFA Champions League and Trabzonspor represented Turkey in the 2011–12 edition."
+  },
+
+  sanSiroTitle:  {
+    tr: "San Siro Deplasmanı: Inter Milan 0–1 Trabzonspor",
+    en: "Away at San Siro: Inter Milan 0–1 Trabzonspor"
+  },
+  sanSiroNote:   {
+    tr: "Trabzonspor'un Şampiyonlar Ligi'nde kazandığı en önemli deplasman galibiyetlerinden biri. Gol: Halil Altıntop. Türk kulüplerinin Avrupa devlerine karşı aldığı önemli sonuçlardan biri olarak kabul edilir.",
+    en: "One of Trabzonspor's most significant away victories in the Champions League. Scorer: Halil Altıntop. Recognised as one of the standout results by a Turkish club against a European giant."
+  },
+
+  sec2022Title:  { tr: "2021–22: 38 Yıl Sonra Şampiyonluk", en: "2021–22: Champions After 38 Years" },
+  sec2022Body:   {
+    tr: "Trabzonspor 2021–22 sezonunu açık ara lider tamamladı, lig boyunca istikrarlı performans gösterdi ve şampiyonluğu haftalar önce garantiledi. Bu şampiyonluk kulübün 38 yıl sonra gelen lig zaferi oldu.",
+    en: "Trabzonspor finished the 2021–22 season as dominant leaders, showing consistent form throughout and clinching the title weeks early. This championship was the club's league triumph after 38 years."
+  },
+
+  allTitlesTitle: { tr: "Trabzonspor Süper Lig Şampiyonlukları — Toplam 8", en: "Trabzonspor Süper Lig Championships — 8 in Total" },
+  allTitlesSeason:{ tr: "Sezon",       en: "Season"      },
+  allTitlesOrder: { tr: "Sıra",        en: "#"           },
+
+  clubCol:   { tr: "Kulüp",       en: "Club"    },
+  titlesCol: { tr: "Şampiyonluk", en: "Titles"  },
+  seasonCol: { tr: "Sezon",       en: "Season"  },
+  champCol:  { tr: "Şampiyon",    en: "Champion"},
 };
 
-/* ── Sub-components ── */
+/* ────────────────────────────────────────────────
+   Sub-components
+──────────────────────────────────────────────── */
 
 function SectionTitle({ children, color = TS.bordeaux }: { children: React.ReactNode; color?: string }) {
   return (
@@ -184,7 +235,7 @@ function TitleTable({ rows, lang, clubLabel, titlesLabel }: {
     <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.87rem" }}>
       <thead>
         <tr style={{ borderBottom: `2px solid ${TS.light}` }}>
-          <th style={{ textAlign: "left", padding: "6px 8px", color: "#999", fontWeight: 700, fontSize: "0.75rem" }}>{clubLabel}</th>
+          <th style={{ textAlign: "left",  padding: "6px 8px", color: "#999", fontWeight: 700, fontSize: "0.75rem" }}>{clubLabel}</th>
           <th style={{ textAlign: "right", padding: "6px 8px", color: "#999", fontWeight: 700, fontSize: "0.75rem" }}>{titlesLabel}</th>
         </tr>
       </thead>
@@ -193,12 +244,8 @@ function TitleTable({ rows, lang, clubLabel, titlesLabel }: {
           const name = typeof row.club === "string" ? row.club : row.club[lang];
           return (
             <tr key={i} style={{ background: row.isTS ? `${TS.bordeaux}10` : i % 2 === 0 ? "#fafafa" : "#fff" }}>
-              <td style={{ padding: "8px 8px", fontWeight: row.isTS ? 800 : 400, color: row.isTS ? TS.bordeaux : "#333" }}>
-                {name}
-              </td>
-              <td style={{ padding: "8px 8px", textAlign: "right", fontWeight: row.isTS ? 800 : 600, color: row.isTS ? TS.bordeaux : "#666" }}>
-                {row.titles}
-              </td>
+              <td style={{ padding: "8px 8px", fontWeight: row.isTS ? 800 : 400, color: row.isTS ? TS.bordeaux : "#333" }}>{name}</td>
+              <td style={{ padding: "8px 8px", textAlign: "right", fontWeight: row.isTS ? 800 : 600, color: row.isTS ? TS.bordeaux : "#666" }}>{row.titles}</td>
             </tr>
           );
         })}
@@ -207,13 +254,59 @@ function TitleTable({ rows, lang, clubLabel, titlesLabel }: {
   );
 }
 
-/* ── Main component ── */
+function Pill({ label, blue }: { label: string; blue?: boolean }) {
+  return (
+    <span style={{
+      background: blue ? TS.blue + "18" : TS.bordeaux + "15",
+      border: `1px solid ${blue ? TS.blue : TS.bordeaux}40`,
+      color: blue ? TS.blue : TS.bordeaux,
+      fontSize: "0.8rem", fontWeight: 700,
+      padding: "3px 10px", borderRadius: 99
+    }}>{label}</span>
+  );
+}
+
+function EuroCard({ win, lang, i }: { win: typeof euroWins[0]; lang: Language; i: number }) {
+  return (
+    <div style={{
+      border: `1.5px solid ${TS.bordeaux}30`,
+      borderLeft: `4px solid ${TS.bordeaux}`,
+      borderRadius: 6, padding: "12px 14px",
+      background: i % 2 === 0 ? "#fafafa" : "#fff"
+    }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 4 }}>
+        <span style={{ fontWeight: 800, fontSize: "0.95rem", color: "#111" }}>{win.opponent}</span>
+        <span style={{
+          fontWeight: 800, fontSize: "1rem", color: TS.bordeaux,
+          background: `${TS.bordeaux}15`, padding: "2px 10px", borderRadius: 99
+        }}>{win.score}</span>
+      </div>
+      <div style={{ fontSize: "0.78rem", color: "#888", marginBottom: 6 }}>
+        {win.competition[lang]} · {win.season}
+        {win.venue && ` · ${win.venue}`}
+      </div>
+      {win.scorer && (
+        <div style={{ fontSize: "0.78rem", color: "#666", marginBottom: 4 }}>
+          ⚽ {win.scorer}
+        </div>
+      )}
+      <div style={{ fontSize: "0.84rem", color: "#444", lineHeight: 1.55, fontStyle: "italic" }}>
+        {win.note[lang]}
+      </div>
+    </div>
+  );
+}
+
+/* ────────────────────────────────────────────────
+   Main component
+──────────────────────────────────────────────── */
 
 export default function TopBar({ lang, setLang }: Props) {
   const [open, setOpen] = useState(false);
 
   return (
     <>
+      {/* ── TopBar ── */}
       <div style={{
         position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
         background: `linear-gradient(90deg, ${TS.bordeaux} 0%, ${TS.blue} 100%)`,
@@ -225,14 +318,11 @@ export default function TopBar({ lang, setLang }: Props) {
         </Link>
 
         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-          <button
-            onClick={() => setOpen(true)}
-            style={{
-              background: "rgba(255,255,255,0.15)", border: "1.5px solid rgba(255,255,255,0.45)",
-              borderRadius: 99, color: "#fff", fontSize: "0.75rem", fontWeight: 700,
-              letterSpacing: "0.05em", padding: "4px 13px", cursor: "pointer", whiteSpace: "nowrap"
-            }}
-          >
+          <button onClick={() => setOpen(true)} style={{
+            background: "rgba(255,255,255,0.15)", border: "1.5px solid rgba(255,255,255,0.45)",
+            borderRadius: 99, color: "#fff", fontSize: "0.75rem", fontWeight: 700,
+            letterSpacing: "0.05em", padding: "4px 13px", cursor: "pointer", whiteSpace: "nowrap"
+          }}>
             {lang === "tr" ? "★ Trabzonspor'u Tanı" : "★ Meet Trabzonspor"}
           </button>
 
@@ -296,12 +386,7 @@ export default function TopBar({ lang, setLang }: Props) {
                 <p style={{ margin: "0 0 8px", fontSize: "0.75rem", fontWeight: 700, color: "#999", textTransform: "uppercase", letterSpacing: "0.07em" }}>
                   {t.sec1TableNote[lang]}
                 </p>
-                <TitleTable
-                  rows={hegemony1959}
-                  lang={lang}
-                  clubLabel={t.clubCol[lang]}
-                  titlesLabel={t.titlesCol[lang]}
-                />
+                <TitleTable rows={hegemony1959} lang={lang} clubLabel={t.clubCol[lang]} titlesLabel={t.titlesCol[lang]} />
               </div>
 
               {/* 2 — Rise */}
@@ -312,14 +397,13 @@ export default function TopBar({ lang, setLang }: Props) {
                 </p>
               </div>
 
-              {/* 3 — 1976–1984 season table */}
+              {/* 3 — 1976–1984 season table + distribution */}
               <div>
                 <SectionTitle>{t.sec3Title[lang]}</SectionTitle>
                 <p style={{ margin: "0 0 14px", color: "#444", lineHeight: 1.7, fontSize: "0.9rem" }}>
                   {t.sec3Body[lang]}
                 </p>
 
-                {/* Season-by-season table */}
                 <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.87rem", marginBottom: 16 }}>
                   <thead>
                     <tr style={{ borderBottom: `2px solid ${TS.light}` }}>
@@ -334,11 +418,7 @@ export default function TopBar({ lang, setLang }: Props) {
                         <td style={{ padding: "8px 8px", fontWeight: row.isTS ? 800 : 400, color: row.isTS ? TS.bordeaux : "#333" }}>
                           {row.champion[lang]}
                           {row.isTS && (
-                            <span style={{
-                              marginLeft: 8, fontSize: "0.65rem", fontWeight: 800,
-                              background: TS.bordeaux, color: "#fff",
-                              padding: "1px 7px", borderRadius: 99, verticalAlign: "middle"
-                            }}>★</span>
+                            <span style={{ marginLeft: 8, fontSize: "0.65rem", fontWeight: 800, background: TS.bordeaux, color: "#fff", padding: "1px 7px", borderRadius: 99, verticalAlign: "middle" }}>★</span>
                           )}
                         </td>
                       </tr>
@@ -349,108 +429,132 @@ export default function TopBar({ lang, setLang }: Props) {
                 <p style={{ margin: "0 0 8px", fontSize: "0.75rem", fontWeight: 700, color: "#999", textTransform: "uppercase", letterSpacing: "0.07em" }}>
                   {t.sec3TableNote[lang]}
                 </p>
-                <TitleTable
-                  rows={dist1976}
-                  lang={lang}
-                  clubLabel={t.clubCol[lang]}
-                  titlesLabel={t.titlesCol[lang]}
-                />
+                <TitleTable rows={dist1976} lang={lang} clubLabel={t.clubCol[lang]} titlesLabel={t.titlesCol[lang]} />
               </div>
 
-              {/* 4 — Cups */}
+              {/* 4 — Cups 1976–1984 */}
               <div>
                 <SectionTitle color={TS.blue}>{t.sec4Title[lang]}</SectionTitle>
                 <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
                   {[
-                    { label: t.cupTurkish[lang], items: cups1976[lang].turkish },
-                    { label: t.cupPresid[lang],  items: cups1976[lang].presidential },
+                    { label: t.cupTurkish[lang], items: cups1976.turkish },
+                    { label: t.cupPresid[lang],  items: cups1976.presidential },
                   ].map(group => (
                     <div key={group.label}>
                       <div style={{ fontSize: "0.78rem", fontWeight: 700, color: "#555", marginBottom: 6 }}>{group.label}</div>
                       <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-                        {group.items.map(yr => (
-                          <span key={yr} style={{
-                            background: TS.blue + "18", border: `1px solid ${TS.blue}40`,
-                            color: TS.blue, fontSize: "0.8rem", fontWeight: 700,
-                            padding: "3px 10px", borderRadius: 99
-                          }}>{yr}</span>
-                        ))}
+                        {group.items.map(yr => <Pill key={yr} label={yr} blue />)}
                       </div>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* 5 — European victories */}
-              <div>
-                <SectionTitle>{t.sec6Title[lang]}</SectionTitle>
-                <p style={{ margin: "0 0 14px", color: "#444", lineHeight: 1.7, fontSize: "0.9rem" }}>
-                  {t.sec6Body[lang]}
-                </p>
-                <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-                  {euroWins.map((w, i) => (
-                    <div key={i} style={{
-                      border: `1.5px solid ${TS.bordeaux}30`,
-                      borderLeft: `4px solid ${TS.bordeaux}`,
-                      borderRadius: 6,
-                      padding: "12px 14px",
-                      background: i % 2 === 0 ? "#fafafa" : "#fff"
-                    }}>
-                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 4 }}>
-                        <span style={{ fontWeight: 800, fontSize: "0.95rem", color: "#111" }}>
-                          {w.opponent}
-                        </span>
-                        <span style={{
-                          fontWeight: 800, fontSize: "1rem", color: TS.bordeaux,
-                          background: `${TS.bordeaux}15`, padding: "2px 10px", borderRadius: 99
-                        }}>
-                          {w.score}
-                        </span>
-                      </div>
-                      <div style={{ fontSize: "0.78rem", color: "#888", marginBottom: 6 }}>
-                        {w.competition[lang]} · {w.season}
-                      </div>
-                      <div style={{ fontSize: "0.84rem", color: "#444", lineHeight: 1.55, fontStyle: "italic" }}>
-                        {w.note[lang]}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* 6 — All-time 1984 */}
+              {/* 5 — All-time standings as of 1984  ← NOW BEFORE European wins */}
               <div>
                 <SectionTitle>{t.sec5Title[lang]}</SectionTitle>
                 <p style={{ margin: "0 0 14px", color: "#444", lineHeight: 1.7, fontSize: "0.9rem" }}>
                   {t.sec5Body[lang]}
                 </p>
-                <TitleTable
-                  rows={dist1984}
-                  lang={lang}
-                  clubLabel={t.clubCol[lang]}
-                  titlesLabel={t.titlesCol[lang]}
-                />
+                <TitleTable rows={dist1984} lang={lang} clubLabel={t.clubCol[lang]} titlesLabel={t.titlesCol[lang]} />
               </div>
 
-              {/* Closing statement */}
+              {/* Closing box */}
               <div style={{
                 background: `linear-gradient(135deg, ${TS.bordeaux}12 0%, ${TS.blue}12 100%)`,
-                border: `2px solid ${TS.bordeaux}`,
-                borderRadius: 8, padding: "14px 16px"
+                border: `2px solid ${TS.bordeaux}`, borderRadius: 8, padding: "14px 16px"
               }}>
                 <p style={{ margin: 0, fontSize: "0.88rem", color: "#222", lineHeight: 1.7, fontWeight: 600 }}>
                   {t.closing[lang]}
                 </p>
               </div>
 
-              {/* After 1984 */}
+              {/* 6 — European victories 1976–1984  ← AFTER standings */}
               <div>
-                <SectionTitle color={TS.blue}>{t.after[lang]}</SectionTitle>
-                <ul style={{ margin: 0, paddingLeft: 18, display: "flex", flexDirection: "column", gap: 9 }}>
-                  {t.afterItems[lang].map((item, i) => (
-                    <li key={i} style={{ fontSize: "0.9rem", color: "#333", lineHeight: 1.6 }}>{item}</li>
+                <SectionTitle>{t.secEuroTitle[lang]}</SectionTitle>
+                <p style={{ margin: "0 0 14px", color: "#444", lineHeight: 1.7, fontSize: "0.9rem" }}>
+                  {t.secEuroBody[lang]}
+                </p>
+                <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                  {euroWins.map((w, i) => <EuroCard key={i} win={w} lang={lang} i={i} />)}
+                </div>
+              </div>
+
+              {/* 7 — After 1984 */}
+              <div>
+                <SectionTitle color={TS.blue}>{t.secAfterTitle[lang]}</SectionTitle>
+                <p style={{ margin: "0 0 18px", color: "#444", lineHeight: 1.7, fontSize: "0.9rem" }}>
+                  {t.secAfterBody[lang]}
+                </p>
+
+                {/* Cups after 1984 */}
+                <p style={{ margin: "0 0 6px", fontSize: "0.78rem", fontWeight: 700, color: "#555" }}>{t.cupsAfterLabel[lang]}</p>
+                <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 20 }}>
+                  {[
+                    { label: t.cupTurkish[lang], items: cupsAfter1984.turkish },
+                    { label: t.superCupLabel[lang], items: cupsAfter1984.superCup },
+                  ].map(group => (
+                    <div key={group.label}>
+                      <div style={{ fontSize: "0.78rem", fontWeight: 700, color: "#555", marginBottom: 6 }}>{group.label}</div>
+                      <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+                        {group.items.map(yr => <Pill key={yr} label={yr} blue />)}
+                      </div>
+                    </div>
                   ))}
-                </ul>
+                </div>
+
+                {/* 2010-11 */}
+                <div style={{ background: "#fafafa", border: `1.5px solid ${TS.light}`, borderRadius: 8, padding: "14px 16px", marginBottom: 12 }}>
+                  <div style={{ fontWeight: 800, fontSize: "0.88rem", color: "#111", marginBottom: 6 }}>{t.sec2011Title[lang]}</div>
+                  <p style={{ margin: 0, fontSize: "0.87rem", color: "#444", lineHeight: 1.7 }}>{t.sec2011Body[lang]}</p>
+                </div>
+
+                {/* San Siro */}
+                <EuroCard
+                  win={{
+                    opponent: "Inter Milan",
+                    competition: sanSiro.competition,
+                    season: sanSiro.season,
+                    score: sanSiro.score,
+                    venue: sanSiro.venue,
+                    scorer: sanSiro.scorer,
+                    note: t.sanSiroNote,
+                  }}
+                  lang={lang}
+                  i={1}
+                />
+
+                {/* 2021-22 */}
+                <div style={{ background: "#fafafa", border: `1.5px solid ${TS.light}`, borderRadius: 8, padding: "14px 16px", marginTop: 12 }}>
+                  <div style={{ fontWeight: 800, fontSize: "0.88rem", color: "#111", marginBottom: 6 }}>{t.sec2022Title[lang]}</div>
+                  <p style={{ margin: 0, fontSize: "0.87rem", color: "#444", lineHeight: 1.7 }}>{t.sec2022Body[lang]}</p>
+                </div>
+              </div>
+
+              {/* 8 — All 8 titles */}
+              <div>
+                <SectionTitle>{t.allTitlesTitle[lang]}</SectionTitle>
+                <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.87rem" }}>
+                  <thead>
+                    <tr style={{ borderBottom: `2px solid ${TS.light}` }}>
+                      <th style={{ textAlign: "left", padding: "6px 8px", color: "#999", fontWeight: 700, fontSize: "0.75rem" }}>{t.allTitlesOrder[lang]}</th>
+                      <th style={{ textAlign: "left", padding: "6px 8px", color: "#999", fontWeight: 700, fontSize: "0.75rem" }}>{t.allTitlesSeason[lang]}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {allTitles.map((row, i) => (
+                      <tr key={i} style={{ background: i % 2 === 0 ? `${TS.bordeaux}08` : "#fff" }}>
+                        <td style={{ padding: "8px 8px", color: TS.bordeaux, fontWeight: 800, fontSize: "0.85rem" }}>{i + 1}</td>
+                        <td style={{ padding: "8px 8px", fontWeight: 700, color: "#111" }}>{row.season}</td>
+                      </tr>
+                    ))}
+                    <tr style={{ borderTop: `2px solid ${TS.bordeaux}`, background: `${TS.bordeaux}15` }}>
+                      <td colSpan={2} style={{ padding: "9px 8px", fontWeight: 800, color: TS.bordeaux, fontSize: "0.88rem" }}>
+                        {lang === "tr" ? "Toplam: 8 Süper Lig Şampiyonluğu" : "Total: 8 Süper Lig Championships"}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
 
             </div>
