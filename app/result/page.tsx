@@ -5,6 +5,7 @@ import { questions } from "@/lib/questions"
 import { calculateScore, ScoreResult } from "@/lib/scoring"
 import { getLevel } from "@/lib/levels"
 import { translations } from "@/lib/translations"
+import { generateShareImage } from "@/lib/generateShareImage"
 import { TS } from "@/lib/colors"
 import TopBar from "@/components/TopBar"
 import Footer from "@/components/Footer"
@@ -18,10 +19,15 @@ export default function Result() {
   const [result, setResult] = useState<ScoreResult | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [lang, setLang] = useState<Language>("en")
+  const [sharing, setSharing] = useState(false)
+  const [clubName, setClubName] = useState<string>("")
 
   useEffect(() => {
     const storedLang = localStorage.getItem("lang")
     if (storedLang === "tr" || storedLang === "en") setLang(storedLang as Language)
+
+    const storedClub = localStorage.getItem("clubName")
+    if (storedClub) setClubName(storedClub)
 
     const stored = localStorage.getItem("answers")
     if (!stored) return
@@ -42,6 +48,27 @@ export default function Result() {
   const handleSetLang = (l: Language) => {
     setLang(l)
     localStorage.setItem("lang", l)
+  }
+
+  const handleShare = async () => {
+    if (!result || sharing) return
+    setSharing(true)
+    try {
+      const blob = await generateShareImage(result, lang, clubName)
+      const file = new File([blob], "tri-result.png", { type: "image/png" })
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        await navigator.share({ files: [file] })
+      } else {
+        const url = URL.createObjectURL(blob)
+        const a = document.createElement("a")
+        a.href = url
+        a.download = "tri-result.png"
+        a.click()
+        URL.revokeObjectURL(url)
+      }
+    } finally {
+      setSharing(false)
+    }
   }
 
   if (error) return (
@@ -87,7 +114,9 @@ export default function Result() {
             <span style={{ fontSize: "1.5rem", opacity: 0.6, fontWeight: 400 }}>/ 100</span>
           </div>
           <h2 style={{ margin: "10px 0 0", fontSize: "1.6rem", fontWeight: 700 }}>
-            {level.name[lang]}
+            {clubName
+              ? translations.resultHeadline[lang](clubName, level.name[lang])
+              : level.name[lang]}
           </h2>
         </div>
       </div>
@@ -179,6 +208,22 @@ export default function Result() {
               {translations.home[lang]}
             </button>
           </a>
+          <button
+            onClick={handleShare}
+            style={{
+              padding: "12px 28px",
+              fontSize: "0.95rem",
+              fontWeight: 700,
+              background: sharing ? "#555" : TS.blue,
+              color: "#fff",
+              border: "none",
+              borderRadius: 6,
+              cursor: "pointer",
+              transition: "background 0.2s"
+            }}
+          >
+            {sharing ? translations.sharing[lang] : translations.share[lang]}
+          </button>
         </div>
 
       </div>
