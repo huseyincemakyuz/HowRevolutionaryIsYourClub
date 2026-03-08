@@ -6,10 +6,11 @@ import { calculateScore, ScoreResult } from "@/lib/scoring"
 import { getLevel } from "@/lib/levels"
 import { translations } from "@/lib/translations"
 import { TS } from "@/lib/colors"
-import LanguageToggle from "@/components/LanguageToggle"
+import TopBar from "@/components/TopBar"
 import { CategoryScores, Language } from "@/types"
 
 const CATEGORY_ORDER: (keyof CategoryScores)[] = ["hegemony", "rise", "sustain", "europe"]
+const BAR_HEIGHT = 48
 
 export default function Result() {
 
@@ -42,45 +43,10 @@ export default function Result() {
     localStorage.setItem("lang", l)
   }
 
-  const topBar = (
-    <div style={{
-      background: `linear-gradient(90deg, ${TS.bordeaux} 0%, ${TS.blue} 100%)`,
-      padding: "14px 24px",
-      display: "flex",
-      justifyContent: "space-between",
-      alignItems: "center"
-    }}>
-      <span style={{ color: "#fff", fontWeight: 700, fontSize: "0.9rem", letterSpacing: "0.04em", opacity: 0.9 }}>
-        TRI
-      </span>
-      <div style={{ border: "2px solid rgba(255,255,255,0.6)", borderRadius: 99, overflow: "hidden", display: "inline-flex" }}>
-        {(["tr", "en"] as Language[]).map(l => (
-          <button
-            key={l}
-            onClick={() => handleSetLang(l)}
-            style={{
-              padding: "4px 14px",
-              fontSize: "0.78rem",
-              fontWeight: 700,
-              letterSpacing: "0.06em",
-              cursor: l === lang ? "default" : "pointer",
-              background: l === lang ? "rgba(255,255,255,0.25)" : "transparent",
-              color: "#fff",
-              border: "none",
-              transition: "background 0.2s"
-            }}
-          >
-            {l.toUpperCase()}
-          </button>
-        ))}
-      </div>
-    </div>
-  )
-
   if (error) return (
     <div style={{ fontFamily: "Arial, sans-serif" }}>
-      {topBar}
-      <div style={{ maxWidth: 680, margin: "0 auto", padding: "40px 24px" }}>
+      <TopBar lang={lang} setLang={handleSetLang} />
+      <div style={{ maxWidth: 680, margin: "0 auto", padding: "40px 24px", paddingTop: BAR_HEIGHT + 40 }}>
         <p style={{ color: TS.bordeaux }}>{translations.errorAnswers[lang]}</p>
         <a href="/quiz">
           <button style={{ marginTop: 10, padding: "10px 24px", background: TS.bordeaux, color: "#fff", border: "none", borderRadius: 6, cursor: "pointer" }}>
@@ -93,8 +59,8 @@ export default function Result() {
 
   if (!result) return (
     <div style={{ fontFamily: "Arial, sans-serif" }}>
-      {topBar}
-      <div style={{ maxWidth: 680, margin: "0 auto", padding: "40px 24px" }}>
+      <TopBar lang={lang} setLang={handleSetLang} />
+      <div style={{ maxWidth: 680, margin: "0 auto", padding: "40px 24px", paddingTop: BAR_HEIGHT + 40 }}>
         <p style={{ color: "#666" }}>{translations.loading[lang]}</p>
       </div>
     </div>
@@ -105,10 +71,11 @@ export default function Result() {
   return (
     <div style={{ fontFamily: "Arial, sans-serif" }}>
 
-      {topBar}
+      <TopBar lang={lang} setLang={handleSetLang} />
 
-      {/* Score hero */}
+      {/* Score hero — starts right below fixed bar */}
       <div style={{
+        marginTop: BAR_HEIGHT,
         background: `linear-gradient(135deg, ${TS.bordeaux} 0%, ${TS.blue} 100%)`,
         color: "#fff",
         padding: "40px 24px 48px"
