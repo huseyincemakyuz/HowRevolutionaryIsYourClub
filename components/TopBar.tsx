@@ -75,7 +75,7 @@ const euroWins: {
   {
     opponent: "FC Barcelona",
     competition: { tr: "Avrupa Şampiyon Kulüpler Kupası", en: "European Champion Clubs' Cup" },
-    season: "1976–77",
+    season: "1990–91",
     score: "1–0",
     note: {
       tr: "Barcelona'yı mağlup eden ilk Türk takımı",
