@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { translations } from "@/lib/translations";
 import TopBar from "@/components/TopBar";
@@ -12,6 +12,11 @@ const BAR_HEIGHT = 48;
 
 export default function Home() {
   const [lang, setLang] = useState<Language>("en");
+
+  useEffect(() => {
+    const stored = localStorage.getItem("lang");
+    if (stored === "tr" || stored === "en") setLang(stored as Language);
+  }, []);
 
   const handleSetLang = (l: Language) => {
     setLang(l);
