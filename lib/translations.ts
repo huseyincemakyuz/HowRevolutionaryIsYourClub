@@ -120,15 +120,8 @@ export const translations = {
     tr: "Sonucu Paylaş"
   },
 
-  copied: {
-    en: "Copied ✓",
-    tr: "Kopyalandı ✓"
-  },
-
-  shareText: {
-    en: (score: number, levelName: string) =>
-      `My club scored ${score}/100 on the TRI — "${levelName}". How does yours compare?\n`,
-    tr: (score: number, levelName: string) =>
-      `Kulübüm TRI'da ${score}/100 aldı — "${levelName}". Seninki nasıl?\n`,
+  sharing: {
+    en: "Saving...",
+    tr: "Kaydediliyor..."
   }
 };

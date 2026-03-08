@@ -5,6 +5,7 @@ import { questions } from "@/lib/questions"
 import { calculateScore, ScoreResult } from "@/lib/scoring"
 import { getLevel } from "@/lib/levels"
 import { translations } from "@/lib/translations"
+import { generateShareImage } from "@/lib/generateShareImage"
 import { TS } from "@/lib/colors"
 import TopBar from "@/components/TopBar"
 import Footer from "@/components/Footer"
@@ -18,7 +19,7 @@ export default function Result() {
   const [result, setResult] = useState<ScoreResult | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [lang, setLang] = useState<Language>("en")
-  const [copied, setCopied] = useState(false)
+  const [sharing, setSharing] = useState(false)
 
   useEffect(() => {
     const storedLang = localStorage.getItem("lang")
@@ -46,16 +47,23 @@ export default function Result() {
   }
 
   const handleShare = async () => {
-    if (!result) return
-    const level = getLevel(result.total)
-    const text = translations.shareText[lang](result.total, level.name[lang])
-    const url = window.location.origin
-    if (navigator.share) {
-      await navigator.share({ text, url })
-    } else {
-      await navigator.clipboard.writeText(text + url)
-      setCopied(true)
-      setTimeout(() => setCopied(false), 2000)
+    if (!result || sharing) return
+    setSharing(true)
+    try {
+      const blob = await generateShareImage(result, lang)
+      const file = new File([blob], "tri-result.png", { type: "image/png" })
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        await navigator.share({ files: [file] })
+      } else {
+        const url = URL.createObjectURL(blob)
+        const a = document.createElement("a")
+        a.href = url
+        a.download = "tri-result.png"
+        a.click()
+        URL.revokeObjectURL(url)
+      }
+    } finally {
+      setSharing(false)
     }
   }
 
@@ -200,7 +208,7 @@ export default function Result() {
               padding: "12px 28px",
               fontSize: "0.95rem",
               fontWeight: 700,
-              background: copied ? "#2e7d32" : TS.blue,
+              background: sharing ? "#555" : TS.blue,
               color: "#fff",
               border: "none",
               borderRadius: 6,
@@ -208,7 +216,7 @@ export default function Result() {
               transition: "background 0.2s"
             }}
           >
-            {copied ? translations.copied[lang] : translations.share[lang]}
+            {sharing ? translations.sharing[lang] : translations.share[lang]}
           </button>
         </div>
 
