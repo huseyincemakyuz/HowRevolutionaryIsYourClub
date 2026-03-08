@@ -29,11 +29,10 @@ export default function Quiz() {
   }
 
   const question = questions[current]
+  const progress = Math.round(((current) / questions.length) * 100)
 
   const handleAnswer = (value: number) => {
-
     const updated = { ...answers, [question.id]: value }
-
     setAnswers(updated)
 
     if (current + 1 < questions.length) {
@@ -42,18 +41,33 @@ export default function Quiz() {
       localStorage.setItem("answers", JSON.stringify(updated))
       router.push("/result")
     }
-
   }
 
   return (
-
-    <div style={{ padding: 40 }}>
+    <div style={{ maxWidth: 680, margin: "0 auto", padding: "40px 24px", fontFamily: "sans-serif" }}>
 
       <LanguageToggle lang={lang} setLang={handleSetLang} />
 
-      <p style={{ color: "#666", marginTop: 16 }}>
-        {translations.question[lang]} {current + 1} / {questions.length}
-      </p>
+      {/* Progress bar */}
+      <div style={{ marginTop: 24 }}>
+        <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
+          <span style={{ fontSize: "0.85rem", color: "#666" }}>
+            {translations.question[lang]} {current + 1} / {questions.length}
+          </span>
+          <span style={{ fontSize: "0.85rem", color: "#666" }}>
+            {progress}%
+          </span>
+        </div>
+        <div style={{ height: 6, background: "#e5e5e5", borderRadius: 99 }}>
+          <div style={{
+            height: "100%",
+            width: `${progress}%`,
+            background: "#111",
+            borderRadius: 99,
+            transition: "width 0.3s ease"
+          }} />
+        </div>
+      </div>
 
       <QuestionCard
         question={question}
@@ -62,7 +76,5 @@ export default function Quiz() {
       />
 
     </div>
-
   )
-
 }

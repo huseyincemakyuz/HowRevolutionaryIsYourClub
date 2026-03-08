@@ -101,5 +101,12 @@ export const translations = {
   question: {
     en: "Question",
     tr: "Soru"
+  },
+
+  categories: {
+    hegemony: { en: "Breaking Domestic Dominance", tr: "Yerel Hegemonya Kırma" },
+    rise:     { en: "Speed of Rise",               tr: "Yükseliş Hızı" },
+    sustain:  { en: "Sustainability",               tr: "Sürdürülebilirlik" },
+    europe:   { en: "European Impact",              tr: "Avrupa Etkisi" }
   }
 };
