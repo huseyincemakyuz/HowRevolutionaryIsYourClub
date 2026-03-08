@@ -18,6 +18,7 @@ export default function Result() {
   const [result, setResult] = useState<ScoreResult | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [lang, setLang] = useState<Language>("en")
+  const [copied, setCopied] = useState(false)
 
   useEffect(() => {
     const storedLang = localStorage.getItem("lang")
@@ -42,6 +43,20 @@ export default function Result() {
   const handleSetLang = (l: Language) => {
     setLang(l)
     localStorage.setItem("lang", l)
+  }
+
+  const handleShare = async () => {
+    if (!result) return
+    const level = getLevel(result.total)
+    const text = translations.shareText[lang](result.total, level.name[lang])
+    const url = window.location.origin
+    if (navigator.share) {
+      await navigator.share({ text, url })
+    } else {
+      await navigator.clipboard.writeText(text + url)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    }
   }
 
   if (error) return (
@@ -179,6 +194,22 @@ export default function Result() {
               {translations.home[lang]}
             </button>
           </a>
+          <button
+            onClick={handleShare}
+            style={{
+              padding: "12px 28px",
+              fontSize: "0.95rem",
+              fontWeight: 700,
+              background: copied ? "#2e7d32" : TS.blue,
+              color: "#fff",
+              border: "none",
+              borderRadius: 6,
+              cursor: "pointer",
+              transition: "background 0.2s"
+            }}
+          >
+            {copied ? translations.copied[lang] : translations.share[lang]}
+          </button>
         </div>
 
       </div>

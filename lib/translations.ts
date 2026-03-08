@@ -113,5 +113,22 @@ export const translations = {
     rise:     { en: "Speed of Rise",               tr: "Yükseliş Hızı" },
     sustain:  { en: "Sustainability",               tr: "Sürdürülebilirlik" },
     europe:   { en: "European Impact",              tr: "Avrupa Etkisi" }
+  },
+
+  share: {
+    en: "Share Result",
+    tr: "Sonucu Paylaş"
+  },
+
+  copied: {
+    en: "Copied ✓",
+    tr: "Kopyalandı ✓"
+  },
+
+  shareText: {
+    en: (score: number, levelName: string) =>
+      `My club scored ${score}/100 on the TRI — "${levelName}". How does yours compare?\n`,
+    tr: (score: number, levelName: string) =>
+      `Kulübüm TRI'da ${score}/100 aldı — "${levelName}". Seninki nasıl?\n`,
   }
 };
