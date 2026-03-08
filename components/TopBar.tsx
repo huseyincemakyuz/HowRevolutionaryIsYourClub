@@ -159,8 +159,8 @@ const t = {
   },
 
   closing:       {
-    tr: "Bu nedenle Trabzonspor'un yükselişi, Türk futbol tarihinde en güçlü sistem kırıcı örneklerden biri olarak kabul edilir — ve bu endeksin ilham kaynağıdır.",
-    en: "For this reason, Trabzonspor's rise is considered one of the most powerful system-breaking examples in Turkish football history — and the inspiration behind this index."
+    tr: "Trabzonspor'un yaptığı türden bir hegemonya kırılması — yani büyük şehir dışından gelen bir kulübün onlarca yıllık mutlak bir tekeli bu denli sistematik biçimde parçalaması — Türk futbolunda olduğu kadar dünya futbolunda da eşine ender rastlanan bir örnektir. Bu endeksin ilham kaynağı budur.",
+    en: "The kind of hegemony-breaking Trabzonspor achieved — a club from outside the major city dismantling a decades-long monopoly this systematically — is not only unique in Turkish football but one of the rarest examples in world football history. This is the inspiration behind this index."
   },
 
   secEuroTitle:  {
@@ -197,8 +197,8 @@ const t = {
 
   sec2022Title:  { tr: "2021–22: 38 Yıl Sonra Şampiyonluk", en: "2021–22: Champions After 38 Years" },
   sec2022Body:   {
-    tr: "Trabzonspor 2021–22 sezonunu açık ara lider tamamladı, lig boyunca istikrarlı performans gösterdi ve şampiyonluğu haftalar önce garantiledi. Bu şampiyonluk kulübün 38 yıl sonra gelen lig zaferi oldu.",
-    en: "Trabzonspor finished the 2021–22 season as dominant leaders, showing consistent form throughout and clinching the title weeks early. This championship was the club's league triumph after 38 years."
+    tr: "Trabzonspor 2021–22 sezonunu açık ara lider tamamladı, lig boyunca istikrarlı performans gösterdi ve şampiyonluğu haftalar önce garantiledi.",
+    en: "Trabzonspor finished the 2021–22 season as dominant leaders, showing consistent form throughout and clinching the title weeks early."
   },
 
   allTitlesTitle: { tr: "Trabzonspor Süper Lig Şampiyonlukları — Toplam 8", en: "Trabzonspor Süper Lig Championships — 8 in Total" },
