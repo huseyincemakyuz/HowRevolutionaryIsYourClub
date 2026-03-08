@@ -128,6 +128,12 @@ const t = {
   modalTitle:    { tr: "Trabzonspor'u Tanıyalım",          en: "Meet Trabzonspor"                  },
   modalSub:      { tr: "Bir Anadolu Devrimi",               en: "An Anatolian Revolution"            },
 
+  introTitle:    { tr: "Bu Endeks Neden Var?",               en: "Why Does This Index Exist?"         },
+  introBody:     {
+    tr: "TRI (Trabzonspor Devrimcilik Endeksi), bir kulübün kendi ülkesindeki köklü büyük-şehir hegemonyasını ne ölçüde kırdığını sayısal olarak göstermek için tasarlandı. İlham kaynağı Trabzonspor'dur; çünkü Trabzonspor bu tür bir dönüşümün dünya genelinde de eşi nadir görülen gerçek bir yaşam örneğidir. Tarihini anlamadan endeksi anlamak güç.",
+    en: "TRI (Trabzonspor Revolutionary Index) was designed to quantify how much a club has disrupted the entrenched big-city hegemony in its own country. Its inspiration is Trabzonspor — because Trabzonspor is one of the rarest real-world examples of this kind of transformation anywhere in the world. Understanding the index is hard without understanding the history."
+  },
+
   sec1Title:     { tr: "1959–1974: İstanbul Hegemonyası",   en: "1959–1974: Istanbul Hegemony"       },
   sec1Body:      {
     tr: "Türkiye 1. Ligi 1959'da kuruldu. 1974'e kadar geçen 16 sezonda şampiyonlukların tamamı İstanbul kulüplerine gitti. Bu dönemde Anadolu'dan hiçbir kulüp şampiyon olamadı.",
@@ -195,7 +201,7 @@ const t = {
     en: "One of Trabzonspor's most significant away victories in the Champions League. Scorer: Halil Altıntop. Recognised as one of the standout results by a Turkish club against a European giant."
   },
 
-  sec2022Title:  { tr: "2021–22: 38 Yıl Sonra Şampiyonluk", en: "2021–22: Champions After 38 Years" },
+  sec2022Title:  { tr: "2021–22 Şampiyonluğu",              en: "The 2021–22 Title"                },
   sec2022Body:   {
     tr: "Trabzonspor 2021–22 sezonunu açık ara lider tamamladı, lig boyunca istikrarlı performans gösterdi ve şampiyonluğu haftalar önce garantiledi.",
     en: "Trabzonspor finished the 2021–22 season as dominant leaders, showing consistent form throughout and clinching the title weeks early."
@@ -376,6 +382,19 @@ export default function TopBar({ lang, setLang }: Props) {
 
             {/* Body */}
             <div style={{ padding: "24px 24px 28px", display: "flex", flexDirection: "column", gap: 28 }}>
+
+              {/* 0 — Why this index */}
+              <div style={{
+                background: `linear-gradient(135deg, ${TS.blue}10 0%, ${TS.bordeaux}08 100%)`,
+                border: `1.5px solid ${TS.blue}40`, borderRadius: 8, padding: "14px 16px"
+              }}>
+                <div style={{ fontWeight: 800, fontSize: "0.78rem", textTransform: "uppercase", letterSpacing: "0.1em", color: TS.blue, marginBottom: 8 }}>
+                  {t.introTitle[lang]}
+                </div>
+                <p style={{ margin: 0, fontSize: "0.9rem", color: "#333", lineHeight: 1.75 }}>
+                  {t.introBody[lang]}
+                </p>
+              </div>
 
               {/* 1 — 1959–1974 hegemony */}
               <div>
