@@ -1,51 +1,117 @@
 export const translations = {
-  title: {
-    tr: "Takımın Ne Kadar Devrimci?",
-    en: "How Revolutionary Is Your Club?"
+  // Hero
+  heroTitle: {
+    en: "How Revolutionary Is Your Football Club?",
+    tr: "Futbol Kulübün Ne Kadar Devrimci?"
   },
 
-  subtitle: {
-    tr: "Trabzon Devrim Endeksi (TRI)",
-    en: "The Trabzon Revolution Index (TRI)"
+  // Subtitle
+  heroSubtitle: {
+    en: "A new way to evaluate football clubs — not by trophies, but by how they change the balance of power in football.",
+    tr: "Futbol kulüplerini kupalarla değil, futbolun güç dengelerini nasıl değiştirdikleriyle değerlendiren yeni bir model."
   },
 
-  description: {
-    tr: "Her şampiyon sistemi değiştirmez. Takımının ne kadar devrimci olduğunu keşfet.",
-    en: "Not all champions reshape history. Discover how revolutionary your club truly is."
+  // Short story
+  story: {
+    en: [
+      "In football history, some clubs dominate for decades.",
+      "Others quietly challenge them.",
+      "But only a few clubs truly disrupt the system and change the hierarchy of the game.",
+      "This project measures how revolutionary a football club really is."
+    ],
+    tr: [
+      "Futbol tarihinde bazı kulüpler onlarca yıl boyunca ligi domine eder.",
+      "Bazıları ise bu düzene meydan okur.",
+      "Ancak çok az futbol kulübü gerçekten sistemi sarsar ve oyunun hiyerarşisini değiştirir.",
+      "Bu proje bir futbol kulübünün ne kadar devrimci olduğunu ölçer."
+    ]
   },
 
+  // Model name
+  modelName: {
+    en: "Powered by the Trabzon Revolution Index",
+    tr: "Trabzon Devrim Endeksi ile ölçülür"
+  },
+
+  // What we measure
+  dimensionsTitle: {
+    en: "This index evaluates football clubs across four key dimensions:",
+    tr: "Bu endeks futbol kulüplerini dört temel boyutta değerlendirir:"
+  },
+
+  dimensions: {
+    en: [
+      "Breaking domestic dominance",
+      "Speed of rise to the top",
+      "Sustainability of success",
+      "Impact against major clubs in Europe"
+    ],
+    tr: [
+      "Yerel hegemonya kırma",
+      "Zirveye yükselme hızı",
+      "Başarıyı sürdürebilme",
+      "Avrupa'da büyük kulüplere karşı etki"
+    ]
+  },
+
+  // Bold line
+  boldLine: {
+    en: "Not every champion changes football history.",
+    tr: "Her şampiyon futbol tarihini değiştirmez."
+  },
+
+  // Question to user
+  userQuestion: {
+    en: "Does your football club belong to the rare group that reshaped the game?",
+    tr: "Sizin futbol kulübünüz oyunun dengelerini değiştiren nadir kulüplerden biri mi?"
+  },
+
+  // CTA
   start: {
-    tr: "Testi Başlat",
-    en: "Start the Test"
+    en: "Start the Test",
+    tr: "Testi Başlat"
   },
 
+  // Used in quiz / result pages
   totalScore: {
-    tr: "Toplam Skor",
-    en: "Total Score"
+    en: "Total Score",
+    tr: "Toplam Skor"
   },
 
   breakdown: {
-    tr: "Kategori Kırılımı",
-    en: "Category Breakdown"
+    en: "Category Breakdown",
+    tr: "Kategori Kırılımı"
   },
 
   loading: {
-    tr: "Yükleniyor...",
-    en: "Loading..."
+    en: "Loading...",
+    tr: "Yükleniyor..."
   },
 
   errorAnswers: {
-    tr: "Cevaplar okunamadı. Lütfen testi tekrar yapın.",
-    en: "Could not read saved answers. Please retake the quiz."
+    en: "Could not read saved answers. Please retake the quiz.",
+    tr: "Cevaplar okunamadı. Lütfen testi tekrar yapın."
   },
 
   retake: {
-    tr: "Testi Tekrar Yap",
-    en: "Retake the Test"
+    en: "Retake the Test",
+    tr: "Testi Tekrar Yap"
+  },
+
+  home: {
+    en: "Back to Home",
+    tr: "Ana Sayfaya Dön"
   },
 
   question: {
-    tr: "Soru",
-    en: "Question"
+    en: "Question",
+    tr: "Soru"
+  },
+
+  categories: {
+    hegemony: { en: "Breaking Domestic Dominance", tr: "Yerel Hegemonya Kırma" },
+    rise:     { en: "Speed of Rise",               tr: "Yükseliş Hızı" },
+    sustain:  { en: "Sustainability",               tr: "Sürdürülebilirlik" },
+    europe:   { en: "European Impact",              tr: "Avrupa Etkisi" }
   }
 };
