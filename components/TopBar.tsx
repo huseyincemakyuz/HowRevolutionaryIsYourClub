@@ -49,6 +49,42 @@ const cups1976 = {
   }
 };
 
+const euroWins: {
+  opponent: string; competition: { tr: string; en: string };
+  season: string; score: string; note: { tr: string; en: string };
+}[] = [
+  {
+    opponent: "Liverpool FC",
+    competition: { tr: "Avrupa Şampiyon Kulüpler Kupası", en: "European Champion Clubs' Cup" },
+    season: "1976–77",
+    score: "1–0",
+    note: {
+      tr: "O sezon Avrupa Kupası'nı kazanan Liverpool'u yenen ilk Türk takımı",
+      en: "First Turkish club to defeat Liverpool, who won the European Cup that same season"
+    }
+  },
+  {
+    opponent: "FC Barcelona",
+    competition: { tr: "Avrupa Şampiyon Kulüpler Kupası", en: "European Champion Clubs' Cup" },
+    season: "1976–77",
+    score: "1–0",
+    note: {
+      tr: "Barcelona'yı mağlup eden ilk Türk takımı",
+      en: "First Turkish club to defeat Barcelona"
+    }
+  },
+  {
+    opponent: "Inter Milan",
+    competition: { tr: "UEFA Kupası", en: "UEFA Cup" },
+    season: "1983–84",
+    score: "1–0",
+    note: {
+      tr: "Inter'i yenen ilk Türk kulüplerinden biri",
+      en: "One of the first Turkish clubs to defeat Inter Milan"
+    }
+  },
+];
+
 const dist1984: { club: string; titles: number; isTS: boolean }[] = [
   { club: "Fenerbahçe",  titles: 11, isTS: false },
   { club: "Trabzonspor", titles: 6,  isTS: true  },
@@ -108,6 +144,18 @@ const t = {
       "2021–22 · Champions after 38 years — ending the Big Three's monopoly"
     ]
   },
+  sec6Title: {
+    tr: "Avrupa Devlerine Karşı Tarihi Galibiyetler",
+    en: "Historic Wins Against European Giants"
+  },
+  sec6Body: {
+    tr: "Bu dönemde İstanbul'un büyük kulüpleri Avrupa'da bu galibiyetleri elde edemezken, Trabzonspor sahaya çıktığı Avrupa kupalarında kıtanın en güçlü takımlarını yendi ve Türk futbolunda ilkler yaşandı:",
+    en: "While Istanbul's major clubs could not achieve such results in Europe at the time, Trabzonspor went out and defeated the continent's strongest sides — setting multiple firsts for Turkish football:"
+  },
+  euroOpponent: { tr: "Rakip",      en: "Opponent"    },
+  euroComp:     { tr: "Turnuva",    en: "Competition" },
+  euroSeason:   { tr: "Sezon",      en: "Season"      },
+  euroScore:    { tr: "Skor",       en: "Score"       },
   clubCol:   { tr: "Kulüp",         en: "Club"         },
   titlesCol: { tr: "Şampiyonluk",   en: "Titles"       },
   seasonCol: { tr: "Sezon",         en: "Season"       },
@@ -333,7 +381,44 @@ export default function TopBar({ lang, setLang }: Props) {
                 </div>
               </div>
 
-              {/* 5 — All-time 1984 */}
+              {/* 5 — European victories */}
+              <div>
+                <SectionTitle>{t.sec6Title[lang]}</SectionTitle>
+                <p style={{ margin: "0 0 14px", color: "#444", lineHeight: 1.7, fontSize: "0.9rem" }}>
+                  {t.sec6Body[lang]}
+                </p>
+                <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                  {euroWins.map((w, i) => (
+                    <div key={i} style={{
+                      border: `1.5px solid ${TS.bordeaux}30`,
+                      borderLeft: `4px solid ${TS.bordeaux}`,
+                      borderRadius: 6,
+                      padding: "12px 14px",
+                      background: i % 2 === 0 ? "#fafafa" : "#fff"
+                    }}>
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 4 }}>
+                        <span style={{ fontWeight: 800, fontSize: "0.95rem", color: "#111" }}>
+                          {w.opponent}
+                        </span>
+                        <span style={{
+                          fontWeight: 800, fontSize: "1rem", color: TS.bordeaux,
+                          background: `${TS.bordeaux}15`, padding: "2px 10px", borderRadius: 99
+                        }}>
+                          {w.score}
+                        </span>
+                      </div>
+                      <div style={{ fontSize: "0.78rem", color: "#888", marginBottom: 6 }}>
+                        {w.competition[lang]} · {w.season}
+                      </div>
+                      <div style={{ fontSize: "0.84rem", color: "#444", lineHeight: 1.55, fontStyle: "italic" }}>
+                        {w.note[lang]}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* 6 — All-time 1984 */}
               <div>
                 <SectionTitle>{t.sec5Title[lang]}</SectionTitle>
                 <p style={{ margin: "0 0 14px", color: "#444", lineHeight: 1.7, fontSize: "0.9rem" }}>
