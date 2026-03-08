@@ -329,7 +329,7 @@ export default function TopBar({ lang, setLang }: Props) {
             borderRadius: 99, color: "#fff", fontSize: "0.75rem", fontWeight: 700,
             letterSpacing: "0.05em", padding: "4px 13px", cursor: "pointer", whiteSpace: "nowrap"
           }}>
-            {lang === "tr" ? "★ Trabzonspor'u Tanı" : "★ Meet Trabzonspor"}
+            {lang === "tr" ? "★ Neden TRI?" : "★ Why TRI?"}
           </button>
 
           <div style={{ border: "2px solid rgba(255,255,255,0.55)", borderRadius: 99, overflow: "hidden", display: "inline-flex" }}>
@@ -527,21 +527,6 @@ export default function TopBar({ lang, setLang }: Props) {
                   <div style={{ fontWeight: 800, fontSize: "0.88rem", color: "#111", marginBottom: 6 }}>{t.sec2011Title[lang]}</div>
                   <p style={{ margin: 0, fontSize: "0.87rem", color: "#444", lineHeight: 1.7 }}>{t.sec2011Body[lang]}</p>
                 </div>
-
-                {/* San Siro */}
-                <EuroCard
-                  win={{
-                    opponent: "Inter Milan",
-                    competition: sanSiro.competition,
-                    season: sanSiro.season,
-                    score: sanSiro.score,
-                    venue: sanSiro.venue,
-                    scorer: sanSiro.scorer,
-                    note: t.sanSiroNote,
-                  }}
-                  lang={lang}
-                  i={1}
-                />
 
                 {/* 2021-22 */}
                 <div style={{ background: "#fafafa", border: `1.5px solid ${TS.light}`, borderRadius: 8, padding: "14px 16px", marginTop: 12 }}>
