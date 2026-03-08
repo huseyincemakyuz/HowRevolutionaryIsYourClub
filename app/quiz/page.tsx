@@ -43,55 +43,48 @@ export default function Quiz() {
   }
 
   return (
-    <div style={{ fontFamily: "Arial, sans-serif", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+    <div style={{ fontFamily: "Arial, sans-serif" }}>
 
       <TopBar lang={lang} setLang={handleSetLang} />
 
-      {/* Progress bar — fixed just below the top bar */}
+      {/* Full remaining viewport — center the progress+question block together */}
       <div style={{
-        position: "fixed",
-        top: BAR_HEIGHT,
-        left: 0, right: 0,
-        zIndex: 99,
-        background: TS.bg,
-        borderBottom: `1px solid ${TS.border}`,
-        padding: "12px 24px"
-      }}>
-        <div style={{ maxWidth: 680, margin: "0 auto" }}>
-          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 7 }}>
-            <span style={{ fontSize: "0.8rem", color: "#777" }}>
-              {translations.question[lang]} {current + 1} / {questions.length}
-            </span>
-            <span style={{ fontSize: "0.8rem", fontWeight: 700, color: TS.bordeaux }}>
-              {progress}%
-            </span>
-          </div>
-          <div style={{ height: 6, background: TS.light, borderRadius: 99 }}>
-            <div style={{
-              height: "100%",
-              width: `${progress}%`,
-              background: `linear-gradient(90deg, ${TS.bordeaux}, ${TS.blue})`,
-              borderRadius: 99,
-              transition: "width 0.35s ease"
-            }} />
-          </div>
-        </div>
-      </div>
-
-      {/* Question — vertically centered in remaining viewport */}
-      <div style={{
-        flex: 1,
-        paddingTop: BAR_HEIGHT + 64, // fixed bar + progress bar height
+        minHeight: `calc(100vh - ${BAR_HEIGHT}px)`,
+        marginTop: BAR_HEIGHT,
         display: "flex",
         alignItems: "center",
-        justifyContent: "center"
+        justifyContent: "center",
+        padding: "32px 24px"
       }}>
-        <div style={{ maxWidth: 680, width: "100%", padding: "0 24px" }}>
+        <div style={{ maxWidth: 680, width: "100%" }}>
+
+          {/* Progress bar */}
+          <div style={{ marginBottom: 32 }}>
+            <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 7 }}>
+              <span style={{ fontSize: "0.8rem", color: "#777" }}>
+                {translations.question[lang]} {current + 1} / {questions.length}
+              </span>
+              <span style={{ fontSize: "0.8rem", fontWeight: 700, color: TS.bordeaux }}>
+                {progress}%
+              </span>
+            </div>
+            <div style={{ height: 6, background: TS.light, borderRadius: 99 }}>
+              <div style={{
+                height: "100%",
+                width: `${progress}%`,
+                background: `linear-gradient(90deg, ${TS.bordeaux}, ${TS.blue})`,
+                borderRadius: 99,
+                transition: "width 0.35s ease"
+              }} />
+            </div>
+          </div>
+
           <QuestionCard
             question={question}
             lang={lang}
             onAnswer={handleAnswer}
           />
+
         </div>
       </div>
 

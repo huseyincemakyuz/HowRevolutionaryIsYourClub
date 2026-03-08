@@ -3,9 +3,11 @@
 import { useState } from "react";
 import Link from "next/link";
 import { translations } from "@/lib/translations";
-import LanguageToggle from "@/components/LanguageToggle";
+import TopBar from "@/components/TopBar";
 import { TS } from "@/lib/colors";
 import { Language } from "@/types";
+
+const BAR_HEIGHT = 48;
 
 export default function Home() {
   const [lang, setLang] = useState<Language>("en");
@@ -20,38 +22,16 @@ export default function Home() {
   return (
     <main style={{ fontFamily: "Arial, sans-serif" }}>
 
-      {/* Hero band */}
+      <TopBar lang={lang} setLang={handleSetLang} />
+
+      {/* Hero band — starts below fixed TopBar */}
       <div style={{
+        marginTop: BAR_HEIGHT,
         background: `linear-gradient(135deg, ${TS.bordeaux} 0%, ${TS.blue} 100%)`,
         color: "#fff",
         padding: "48px 24px 56px"
       }}>
         <div style={{ maxWidth: 720, margin: "0 auto" }}>
-
-          {/* Toggle in top-right of hero */}
-          <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: 32 }}>
-            <div style={{ border: "2px solid rgba(255,255,255,0.6)", borderRadius: 99, overflow: "hidden", display: "inline-flex" }}>
-              {(["tr", "en"] as Language[]).map(l => (
-                <button
-                  key={l}
-                  onClick={() => handleSetLang(l)}
-                  style={{
-                    padding: "5px 16px",
-                    fontSize: "0.8rem",
-                    fontWeight: 700,
-                    letterSpacing: "0.06em",
-                    cursor: l === lang ? "default" : "pointer",
-                    background: l === lang ? "rgba(255,255,255,0.25)" : "transparent",
-                    color: "#fff",
-                    border: "none",
-                    transition: "background 0.2s"
-                  }}
-                >
-                  {l.toUpperCase()}
-                </button>
-              ))}
-            </div>
-          </div>
 
           {/* 1 — Hero title */}
           <h1 style={{ fontSize: "2.2rem", fontWeight: 800, margin: "0 0 8px", lineHeight: 1.2 }}>
