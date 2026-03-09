@@ -94,7 +94,7 @@ export default function Quiz() {
                 padding: "14px",
                 fontSize: "1rem",
                 fontWeight: 700,
-                background: clubName.trim() ? "#8B1527" : "#ccc",
+                background: clubName.trim() ? "#5A0E27" : "#ccc",
                 color: "#fff",
                 border: "none",
                 borderRadius: 8,

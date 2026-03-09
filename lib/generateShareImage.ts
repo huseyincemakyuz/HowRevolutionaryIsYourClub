@@ -5,8 +5,9 @@ import { Language } from "@/types"
 
 const W = 600
 const H = 380
-const BORDEAUX = "#8B1527"
-const BLUE = "#1B3F8F"
+const BORDEAUX = "#5A0E27"
+const BLUE = "#75B7E5"
+const GOLD = "#D39D3F"
 const CATEGORIES: (keyof ScoreResult["breakdown"])[] = ["hegemony", "rise", "sustain", "europe"]
 
 export async function generateShareImage(result: ScoreResult, lang: Language, clubName = ""): Promise<Blob> {
@@ -99,7 +100,7 @@ export async function generateShareImage(result: ScoreResult, lang: Language, cl
     ctx.fill()
 
     // fill
-    ctx.fillStyle = i % 2 === 0 ? "rgba(255,255,255,0.9)" : "rgba(255,220,220,0.85)"
+    ctx.fillStyle = i % 2 === 0 ? "rgba(255,255,255,0.9)" : GOLD + "CC"
     ctx.beginPath()
     roundRect(ctx, barX, y + 26, barW * (pct / 100), 8, 4)
     ctx.fill()
