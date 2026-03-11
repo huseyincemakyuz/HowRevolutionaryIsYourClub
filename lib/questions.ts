@@ -19,13 +19,13 @@ export const questions: Question[] = [
     id: 2,
     category: "hegemony",
     text: {
-      tr: "Takımınız bu hakimiyet döneminde şampiyon olabildi mi?",
-      en: "Did your club manage to win the league during that dominant era?"
+      tr: "İlk şampiyonluğunuzu kazandığınızda takımınız bir outsider veya yeni güç müydü?",
+      en: "Was your club considered an outsider or newcomer to power when you first won the league?"
     },
     options: [
-      { label: { tr: "Evet", en: "Yes" }, value: 5 },
-      { label: { tr: "Çok yaklaştı", en: "Came very close" }, value: 2 },
-      { label: { tr: "Hayır", en: "No" }, value: 0 }
+      { label: { tr: "Evet, dışarıdan geldik", en: "Yes, we were outsiders" }, value: 5 },
+      { label: { tr: "Kısmen", en: "Partially" }, value: 2 },
+      { label: { tr: "Hayır, zaten güçlü bir kulüptük", en: "No, we were already a traditional power" }, value: 0 }
     ]
   },
   {
@@ -45,12 +45,12 @@ export const questions: Question[] = [
     id: 4,
     category: "hegemony",
     text: {
-      tr: "Takımınız bu hakimiyet döneminde birden fazla şampiyonluk kazanarak dengeleri değiştirdi mi?",
-      en: "Did your club win multiple championships and disrupt the established balance?"
+      tr: "Geleneksel güç yapısının dışından gelerek birden fazla şampiyonluk kazandı mı?",
+      en: "Did your club win multiple titles despite coming from outside the traditional power structure?"
     },
     options: [
-      { label: { tr: "Evet, birden fazla şampiyonluk", en: "Yes, multiple titles" }, value: 5 },
-      { label: { tr: "Bir kez kazandı", en: "Won once" }, value: 2 },
+      { label: { tr: "Evet, güç yapısının dışındandık", en: "Yes, we came from outside the power structure" }, value: 5 },
+      { label: { tr: "Bir kez, geleneksel olmayan şekilde", en: "Once, in an unconventional way" }, value: 2 },
       { label: { tr: "Hayır", en: "No" }, value: 0 }
     ]
   },
@@ -60,26 +60,26 @@ export const questions: Question[] = [
     id: 5,
     category: "rise",
     text: {
-      tr: "Takımınız üst lige çıktıktan sonra kaç sezon içinde şampiyonluk yarışına girdi?",
-      en: "How quickly did your club become a title contender after reaching the top division?"
+      tr: "Şampiyonluk yarışına girmeden önce takımınız uzun süre üst ligin dışında mıydı?",
+      en: "Was your club absent from the top division for a significant period before its title-winning era?"
     },
     options: [
-      { label: { tr: "1–3 sezonda", en: "Within 1–3 seasons" }, value: 5 },
-      { label: { tr: "4–7 sezonda", en: "Within 4–7 seasons" }, value: 3 },
-      { label: { tr: "7 sezonu aştı", en: "More than 7 seasons" }, value: 0 }
+      { label: { tr: "Evet, uzun süre dışardaydık", en: "Yes, we were away for a long time" }, value: 5 },
+      { label: { tr: "Kısa süre dışardaydık", en: "We were briefly away" }, value: 3 },
+      { label: { tr: "Hayır, hep tepedeyidik", en: "No, we were always in the top division" }, value: 0 }
     ]
   },
   {
     id: 6,
     category: "rise",
     text: {
-      tr: "İlk büyük başarı takımınızın üst lige yükselmesinden kısa süre sonra mı geldi?",
-      en: "Did your club achieve major success shortly after being promoted to the top division?"
+      tr: "Şampiyonluğunuzu kazandığınız sezon, önceki yıllarda alt sıralarda mıydınız?",
+      en: "In the season your club won the championship, were they coming from a lower table position in previous years?"
     },
     options: [
-      { label: { tr: "Evet, çok kısa sürede", en: "Yes, very quickly" }, value: 5 },
-      { label: { tr: "Birkaç yıl içinde", en: "Within a few years" }, value: 3 },
-      { label: { tr: "Hayır, uzun zaman aldı", en: "No, it took a long time" }, value: 0 }
+      { label: { tr: "Evet, o sezon büyük bir sıçrama yaptık", en: "Yes, we made a huge leap that season" }, value: 5 },
+      { label: { tr: "Orta sıralardandık", en: "We were in mid-table" }, value: 3 },
+      { label: { tr: "Hayır, zaten üst sıralarda beklenen bir kulüptük", en: "No, we were already expected to be at the top" }, value: 0 }
     ]
   },
   {
@@ -114,13 +114,13 @@ export const questions: Question[] = [
     id: 9,
     category: "sustain",
     text: {
-      tr: "Takımınız bir dönemde ligin en güçlü takımlarından biri haline geldi mi?",
-      en: "Did your club become one of the dominant teams of its era?"
+      tr: "Beklenmediğiniz bir dönemde, favori olmayan takım olarak lider konuma geldiniz mi?",
+      en: "Did your club rise to the top as an unexpected, non-favorite team during its dominant era?"
     },
     options: [
-      { label: { tr: "Evet, ligde lider konumdaydı", en: "Yes, a league leader" }, value: 5 },
-      { label: { tr: "Üst sıralardaydı", en: "Near the top" }, value: 3 },
-      { label: { tr: "Hayır", en: "No" }, value: 0 }
+      { label: { tr: "Evet, kimse beklemiyordu", en: "Yes, no one expected it" }, value: 5 },
+      { label: { tr: "Kısmen sürprizdi", en: "It was somewhat surprising" }, value: 3 },
+      { label: { tr: "Hayır, zaten güçlü bir kulüptük", en: "No, we were already a strong club" }, value: 0 }
     ]
   },
   {
