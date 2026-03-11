@@ -58,6 +58,7 @@ export default function Home() {
       </div>
 
       {/* Content */}
+      <div style={{ background: TS.bg }}>
       <div style={{ maxWidth: 720, margin: "0 auto", padding: "48px 24px" }}>
 
         {/* 3 — Short story */}
@@ -116,6 +117,7 @@ export default function Home() {
           </button>
         </Link>
 
+      </div>
       </div>
 
       <Footer lang={lang} />
