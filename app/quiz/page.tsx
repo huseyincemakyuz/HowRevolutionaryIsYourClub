@@ -60,6 +60,7 @@ export default function Quiz() {
       <div style={{
         minHeight: `calc(100vh - ${BAR_HEIGHT}px)`,
         marginTop: BAR_HEIGHT,
+        background: TS.bg,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -119,6 +120,7 @@ export default function Quiz() {
       <div style={{
         minHeight: `calc(100vh - ${BAR_HEIGHT}px)`,
         marginTop: BAR_HEIGHT,
+        background: TS.bg,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",

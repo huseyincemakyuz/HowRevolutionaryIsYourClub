@@ -122,6 +122,7 @@ export default function Result() {
       </div>
 
       {/* Content */}
+      <div style={{ background: TS.bg }}>
       <div style={{ maxWidth: 680, margin: "0 auto", padding: "40px 24px" }}>
 
         {/* Description */}
@@ -226,6 +227,7 @@ export default function Result() {
           </button>
         </div>
 
+      </div>
       </div>
 
       <Footer lang={lang} />
