@@ -30,7 +30,7 @@ export const translations = {
   // Model name
   modelName: {
     en: "Powered by the Trabzon Revolution Index",
-    tr: "Trabzon Devrim Endeksi ile ölçülür"
+    tr: "TRABZON DEVRİM ENDEKSİ İLE ÖLÇÜLÜR"
   },
 
   // What we measure
@@ -52,6 +52,12 @@ export const translations = {
       "Başarıyı sürdürebilme",
       "Avrupa'da büyük kulüplere karşı etki"
     ]
+  },
+
+  // Levels reference
+  levelsTitle: {
+    en: "Score Tiers",
+    tr: "Puan Kategorileri"
   },
 
   // Bold line

@@ -142,12 +142,12 @@ export const questions: Question[] = [
     id: 11,
     category: "europe",
     text: {
-      tr: "Avrupa kupalarında, Avrupa'nın geleneksel elit kulüpleri arasında sayılmadan önemli başarılar elde ettiniz mi?",
-      en: "Did your club achieve significant European success without being part of the traditional European elite?"
+      tr: "Takımınız Avrupa kupalarına katıldığı ilk yıllarda, ülkenizin yerleşik büyük kulüplerinin önüne beklenmedik biçimde geçerek öncü bir rol oynadı mı?",
+      en: "In the early years of your club's participation in European competitions, did they unexpectedly surpass the established major clubs in your country, playing a pioneering role?"
     },
     options: [
-      { label: { tr: "Evet, elitlerden biri değildik", en: "Yes, we weren't part of the elite" }, value: 5 },
-      { label: { tr: "Kısmen, bazı iyi sonuçlar aldık", en: "Partially, we had some good runs" }, value: 3 },
+      { label: { tr: "Evet, beklenmedik biçimde öne çıktık", en: "Yes, we unexpectedly led the way" }, value: 5 },
+      { label: { tr: "Kısmen, bazı önemli sonuçlar aldık", en: "Partially, we had some notable results" }, value: 3 },
       { label: { tr: "Hayır", en: "No" }, value: 0 }
     ]
   },
@@ -155,12 +155,12 @@ export const questions: Question[] = [
     id: 12,
     category: "europe",
     text: {
-      tr: "Avrupa başarılarınız, ülkenizin geleneksel büyük kulüplerinin hiç ulaşamadığı veya çok sonra ulaşabildiği bir düzeyde miydi?",
-      en: "Did your club reach a level in Europe that the traditionally bigger clubs in your country had never reached, or only reached much later?"
+      tr: "Takımınız Avrupa kupalarında büyük Avrupa kulüplerine karşı sembolik galibiyetler elde etti mi ve bu galibiyetleri ülkenizin diğer büyük kulüplerinden önce mi aldı?",
+      en: "Did your club achieve symbolic victories against major European clubs, and did they do so before the other big clubs in your country?"
     },
     options: [
-      { label: { tr: "Evet, onların ulaşamadığı yere ulaştık", en: "Yes, we reached where they couldn't" }, value: 5 },
-      { label: { tr: "Kısmen, biraz ileriydik", en: "Partially, we were slightly ahead" }, value: 2 },
+      { label: { tr: "Evet, sembolik galibiyetler aldık ve ilk bizdik", en: "Yes, symbolic wins — and we were first" }, value: 5 },
+      { label: { tr: "Kısmen, bazı önemli galibiyetler aldık", en: "Partially, we had some significant wins" }, value: 2 },
       { label: { tr: "Hayır", en: "No" }, value: 0 }
     ]
   }

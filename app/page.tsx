@@ -90,6 +90,44 @@ export default function Home() {
 
         <hr style={{ border: "none", borderTop: `2px solid ${TS.blue}`, opacity: 0.15, marginBottom: 40 }} />
 
+        {/* Levels reference */}
+        <p style={{ margin: "0 0 14px", fontWeight: 700, color: "#222" }}>
+          {t.levelsTitle[lang]}
+        </p>
+        <div style={{ display: "flex", flexDirection: "column", gap: 6, marginBottom: 40 }}>
+          {([
+            { range: "100",   name: { tr: "Kıstas (TRI)",         en: "The Benchmark (TRI)"      }, top: true  },
+            { range: "90–99", name: { tr: "Trabzon Çaplı Devrim", en: "Trabzon-Level Revolution" }, top: false },
+            { range: "81–89", name: { tr: "Güçlü Devrim",         en: "Strong Revolution"        }, top: false },
+            { range: "61–80", name: { tr: "Hegemonya Kırıcı",     en: "Hegemony Breaker"         }, top: false },
+            { range: "41–60", name: { tr: "Lig Bozucu",           en: "League Disruptor"         }, top: false },
+            { range: "21–40", name: { tr: "Köklü Güç",            en: "Established Power"        }, top: false },
+            { range: "0–20",  name: { tr: "Statüko",              en: "The Status Quo"           }, top: false },
+          ] as { range: string; name: { tr: string; en: string }; top: boolean }[]).map((tier) => (
+            <div key={tier.range} style={{
+              display: "flex", alignItems: "center", gap: 12,
+              background: tier.top ? `${TS.bordeaux}10` : "#f5f5f5",
+              border: tier.top ? `1.5px solid ${TS.bordeaux}50` : "1.5px solid #e8e8e8",
+              borderRadius: 7, padding: "10px 14px"
+            }}>
+              <span style={{
+                fontSize: "0.75rem", fontWeight: 800, color: tier.top ? TS.bordeaux : TS.blue,
+                minWidth: 44, letterSpacing: "0.03em"
+              }}>
+                {tier.range}
+              </span>
+              <span style={{
+                fontSize: "0.92rem", fontWeight: tier.top ? 800 : 500,
+                color: tier.top ? TS.bordeaux : "#333"
+              }}>
+                {tier.name[lang]}
+              </span>
+            </div>
+          ))}
+        </div>
+
+        <hr style={{ border: "none", borderTop: `2px solid ${TS.bordeaux}`, opacity: 0.15, marginBottom: 40 }} />
+
         {/* 6 — Bold line */}
         <p style={{ fontSize: "1.2rem", fontWeight: 800, color: TS.bordeaux, margin: "0 0 14px" }}>
           {t.boldLine[lang]}
