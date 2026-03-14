@@ -90,6 +90,49 @@ export default function Home() {
 
         <hr style={{ border: "none", borderTop: `2px solid ${TS.blue}`, opacity: 0.15, marginBottom: 40 }} />
 
+        {/* Why TRI — stats section */}
+        <p style={{ margin: "0 0 20px", fontWeight: 700, fontSize: "1.05rem", color: "#222" }}>
+          {t.whyTRITitle[lang]}
+        </p>
+
+        <div style={{ display: "flex", flexDirection: "column", gap: 12, marginBottom: 20 }}>
+          {t.whyTRIStats[lang].map((row, i) => (
+            <div key={i} style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 16,
+              background: i === 1 ? `${TS.bordeaux}10` : "#f5f5f5",
+              border: i === 1 ? `1.5px solid ${TS.bordeaux}40` : "1.5px solid #e5e5e5",
+              borderRadius: 8,
+              padding: "12px 16px"
+            }}>
+              <span style={{ fontSize: "0.72rem", fontWeight: 700, color: TS.blue, minWidth: 72, letterSpacing: "0.04em" }}>
+                {row.period}
+              </span>
+              <div style={{ flex: 1 }}>
+                <div style={{ fontSize: "0.88rem", fontWeight: i === 1 ? 700 : 400, color: i === 1 ? TS.bordeaux : "#444" }}>
+                  {row.label}
+                </div>
+                <div style={{ fontSize: "0.78rem", color: "#888", marginTop: 2 }}>{row.note}</div>
+              </div>
+              <span style={{
+                fontSize: "1.1rem",
+                fontWeight: 800,
+                color: i === 1 ? TS.bordeaux : "#555",
+                whiteSpace: "nowrap"
+              }}>
+                {row.value}
+              </span>
+            </div>
+          ))}
+        </div>
+
+        <p style={{ fontSize: "0.9rem", color: "#555", lineHeight: 1.65, margin: "0 0 40px", fontStyle: "italic" }}>
+          {t.whyTRINote[lang]}
+        </p>
+
+        <hr style={{ border: "none", borderTop: `2px solid ${TS.bordeaux}`, opacity: 0.15, marginBottom: 40 }} />
+
         {/* 6 — Bold line */}
         <p style={{ fontSize: "1.2rem", fontWeight: 800, color: TS.bordeaux, margin: "0 0 14px" }}>
           {t.boldLine[lang]}

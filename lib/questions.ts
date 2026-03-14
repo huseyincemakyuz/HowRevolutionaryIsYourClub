@@ -155,13 +155,13 @@ export const questions: Question[] = [
     id: 12,
     category: "europe",
     text: {
-      tr: "Bu Avrupa başarıları, ülkenizdeki daha zengin veya daha büyük kulüplerden önce mi geldi?",
-      en: "Did these European successes come before the traditionally richer or bigger clubs in your country?"
+      tr: "Avrupa başarılarınız, ülkenizin geleneksel büyük kulüplerinin hiç ulaşamadığı veya çok sonra ulaşabildiği bir düzeyde miydi?",
+      en: "Did your club reach a level in Europe that the traditionally bigger clubs in your country had never reached, or only reached much later?"
     },
     options: [
-      { label: { tr: "Evet, öncü olduk", en: "Yes, we were pioneers" }, value: 5 },
-      { label: { tr: "Eş zamanlıydı", en: "Around the same time" }, value: 2 },
-      { label: { tr: "Hayır, sonra geldi", en: "No, they came after" }, value: 0 }
+      { label: { tr: "Evet, onların ulaşamadığı yere ulaştık", en: "Yes, we reached where they couldn't" }, value: 5 },
+      { label: { tr: "Kısmen, biraz ileriydik", en: "Partially, we were slightly ahead" }, value: 2 },
+      { label: { tr: "Hayır", en: "No" }, value: 0 }
     ]
   }
 ];
