@@ -54,6 +54,12 @@ export const translations = {
     ]
   },
 
+  // Levels reference
+  levelsTitle: {
+    en: "Score Tiers",
+    tr: "Puan Kategorileri"
+  },
+
   // Bold line
   boldLine: {
     en: "Not every champion changes football history.",
