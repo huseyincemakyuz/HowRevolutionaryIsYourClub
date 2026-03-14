@@ -73,16 +73,6 @@ const euroWins: {
     }
   },
   {
-    opponent: "FC Barcelona",
-    competition: { tr: "Avrupa Şampiyon Kulüpler Kupası", en: "European Champion Clubs' Cup" },
-    season: "1990–91",
-    score: "1–0",
-    note: {
-      tr: "Barcelona'yı mağlup eden ilk Türk takımı",
-      en: "First Turkish club to defeat FC Barcelona"
-    }
-  },
-  {
     opponent: "Inter Milan",
     competition: { tr: "UEFA Kupası", en: "UEFA Cup" },
     season: "1983–84",
@@ -92,6 +82,16 @@ const euroWins: {
       en: "One of the first Turkish clubs to defeat Inter Milan"
     }
   },
+  {
+    opponent: "FC Barcelona",
+    competition: { tr: "Avrupa Şampiyon Kulüpler Kupası", en: "European Champion Clubs' Cup" },
+    season: "1990–91",
+    score: "1–0",
+    note: {
+      tr: "Barcelona'yı mağlup eden ilk Türk takımı",
+      en: "First Turkish club to defeat FC Barcelona"
+    }
+  },  
 ];
 
 /* European win comparison stats */
@@ -151,7 +151,7 @@ const allTitles: { season: string }[] = [
 ──────────────────────────────────────────────── */
 const t = {
   modalTitle:    { tr: "Trabzonspor'u Tanıyalım",          en: "Meet Trabzonspor"                  },
-  modalSub:      { tr: "Bir Anadolu Devrimi",               en: "An Anatolian Revolution"            },
+  modalSub:      { tr: "BİR ANADOLU DEVRİMİ",               en: "An Anatolian Revolution"            },
 
   introTitle:    { tr: "Bu Endeks Neden Var?",               en: "Why Does This Index Exist?"         },
   introBody:     {
@@ -183,7 +183,7 @@ const t = {
   cupTurkish:    { tr: "Türkiye Kupası",                     en: "Turkish Cup"                        },
   cupPresid:     { tr: "Cumhurbaşkanlığı Kupası (Süper Kupa)", en: "Presidential Cup (Super Cup)"    },
 
-  sec5Title:     { tr: "1984 İtibarıyla Toplam Lig Şampiyonlukları", en: "All-Time League Titles as of 1984" },
+  sec5Title:     { tr: "1984 İTİBARIYLA TOPLAM LİG ŞAMPİYONLUKLARI", en: "All-Time League Titles as of 1984" },
   sec5Body:      {
     tr: "1984 sezonu sonunda Türkiye ligi tarihindeki toplam sıralama — Trabzonspor yalnızca 10 yılda köklü İstanbul kulüpleriyle aynı seviyeye ulaşmıştı:",
     en: "After the 1984 season, the all-time standings — Trabzonspor had reached the same level as Istanbul's most historic clubs in just 10 years:"
@@ -195,7 +195,7 @@ const t = {
   },
 
   secEuroTitle:  {
-    tr: "Avrupa Devlerine Karşı Tarihi Galibiyetler (1976–1984)",
+    tr: "AVRUPA DEVLERİNE KARŞI TARİHİ GALİBİYETLER (1976–1984)",
     en: "Historic Wins Against European Giants (1976–1984)"
   },
   secEuroBody:   {
@@ -203,12 +203,12 @@ const t = {
     en: "While Istanbul's major clubs could not achieve such results in Europe at the time, Trabzonspor defeated the continent's strongest sides — setting multiple firsts for Turkish football:"
   },
   secEuroStatsTitle: {
-    tr: "Avrupa Galibiyetleri Karşılaştırması",
+    tr: "AVRUPA GALİBİYETLERİ KARŞILAŞTIRMASI",
     en: "European Wins Comparison"
   },
   secEuroStatsNote: {
-    tr: "Trabzonspor, kendi döneminde diğer tüm Türk kulüplerini tek başına geçti.",
-    en: "Trabzonspor single-handedly outperformed every other Turkish club in Europe during their era."
+    tr: "Trabzonspor, üst lige ilk çıktığı dönemde diğer tüm Türk kulüplerini tek başına geçti.",
+    en: "Trabzonspor single-handedly surpassed all other Turkish clubs during their initial promotion to the top league."
   },
 
   secAfterTitle: { tr: "1984 Sonrası: Rekabetin Devamı",   en: "After 1984: Continued Competition"  },
@@ -240,7 +240,7 @@ const t = {
     en: "Trabzonspor finished the 2021–22 season as dominant leaders, showing consistent form throughout and clinching the title weeks early."
   },
 
-  allTitlesTitle: { tr: "Trabzonspor Süper Lig Şampiyonlukları — Toplam 8", en: "Trabzonspor Süper Lig Championships — 8 in Total" },
+  allTitlesTitle: { tr: "TRABZONSPOR SÜPER LİG ŞAMPİYONLUKLARI — Toplam 8", en: "Trabzonspor Süper Lig Championships — 8 in Total" },
   allTitlesSeason:{ tr: "Sezon",       en: "Season"      },
   allTitlesOrder: { tr: "Sıra",        en: "#"           },
 
