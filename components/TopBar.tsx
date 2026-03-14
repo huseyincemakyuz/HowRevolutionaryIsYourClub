@@ -164,9 +164,9 @@ const t = {
     tr: "Türkiye 1. Ligi 1959'da kuruldu. 1974'e kadar geçen 16 sezonda şampiyonlukların tamamı İstanbul kulüplerine gitti. Bu dönemde Anadolu'dan hiçbir kulüp şampiyon olamadı.",
     en: "The Turkish First Division was founded in 1959. Over the 16 seasons until 1974, every single league title went to an Istanbul club. No Anatolian club was able to win the championship during this period."
   },
-  sec1TableNote: { tr: "1959–1974 Şampiyonluk Dağılımı",   en: "1959–1974 Title Distribution"       },
+  sec1TableNote: { tr: "1959–1974 ŞAMPİYONLUK DAĞILIMI",   en: "1959–1974 Title Distribution"       },
 
-  sec2Title:     { tr: "Trabzonspor'un Yükselişi",          en: "Trabzonspor's Rise"                 },
+  sec2Title:     { tr: "Trabzonspor'un YÜKSELİŞİ",          en: "Trabzonspor's Rise"                 },
   sec2Body:      {
     tr: "Trabzonspor 1974–75 sezonunda Türkiye 1. Ligi'ne yükseldi. Yalnızca bir sezon sonra, 1975–76'da şampiyon oldu ve Türk futbol tarihinde yeni bir dönemi başlattı.",
     en: "Trabzonspor was promoted to the Turkish First Division in the 1974–75 season. Just one season later, in 1975–76, they became champions — opening a new chapter in Turkish football history."
@@ -177,7 +177,7 @@ const t = {
     tr: "Trabzonspor, ligdeki ilk 10 yılında 6 lig şampiyonluğu kazandı. İşte o dönemin sezon sezon tablosu:",
     en: "In their first 10 years in the top flight, Trabzonspor won 6 league titles. Here is the season-by-season breakdown:"
   },
-  sec3TableNote: { tr: "1976–1984 Şampiyonluk Dağılımı",   en: "1976–1984 Title Distribution"       },
+  sec3TableNote: { tr: "1976–1984 ŞAMPİYONLUK DAĞILIMI",   en: "1976–1984 Title Distribution"       },
 
   sec4Title:     { tr: "1976–1984 Arasında Kazanılan Kupalar", en: "Cups Won 1976–1984"              },
   cupTurkish:    { tr: "Türkiye Kupası",                     en: "Turkish Cup"                        },
@@ -199,7 +199,7 @@ const t = {
     en: "European Success"
   },
   secEuroWinsLabel: {
-    tr: "Avrupa Devlerine Karşı Tarihi Galibiyetler",
+    tr: "AVRUPA DEVLERİNE KARŞI TARİHİ GALİBİYETLER",
     en: "Historic Wins Against European Giants"
   },
   secEuroBody:   {
@@ -215,7 +215,7 @@ const t = {
     en: "Trabzonspor single-handedly surpassed all other Turkish clubs during their initial promotion to the top league."
   },
 
-  secAfterTitle: { tr: "1984 Sonrası: Rekabetin Devamı",   en: "After 1984: Continued Competition"  },
+  secAfterTitle: { tr: "1984 Sonrası: REKABETİN DEVAMI",   en: "After 1984: Continued Competition"  },
   secAfterBody:  {
     tr: "Trabzonspor 1984 sonrasında da Türk futbolunun en güçlü kulüplerinden biri olarak rekabetçi kalmaya devam etti. Lig şampiyonluğu dışında birçok ulusal kupa kazandı ve Avrupa kupalarında düzenli olarak yer aldı.",
     en: "After 1984, Trabzonspor continued to be one of the strongest clubs in Turkish football — winning multiple national cups and regularly competing in European competitions."
