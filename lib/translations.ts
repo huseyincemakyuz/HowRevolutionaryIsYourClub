@@ -30,7 +30,7 @@ export const translations = {
   // Model name
   modelName: {
     en: "Powered by the Trabzon Revolution Index",
-    tr: "Trabzon Devrim Endeksi ile ölçülür"
+    tr: "TRABZON DEVRİM ENDEKSİ İLE ÖLÇÜLÜR"
   },
 
   // What we measure
