@@ -54,30 +54,6 @@ export const translations = {
     ]
   },
 
-  // Why TRI section
-  whyTRITitle: {
-    en: "Why Is Trabzonspor the Benchmark?",
-    tr: "Neden Trabzonspor Kıstas?"
-  },
-
-  whyTRIStats: {
-    en: [
-      { period: "1956–1974", label: "All Turkish clubs combined", value: "≈ 14 wins", note: "18 years of European football" },
-      { period: "1976–1984", label: "Trabzonspor alone", value: "≈ 7 wins", note: "Beat Liverpool 1–0, Inter Milan 1–0" },
-      { period: "1976–1984", label: "All other Turkish clubs", value: "≈ 6 wins", note: "Combined total" }
-    ],
-    tr: [
-      { period: "1956–1974", label: "Tüm Türk kulüpleri toplamı", value: "≈ 14 galibiyet", note: "18 yıllık Avrupa futbolu" },
-      { period: "1976–1984", label: "Trabzonspor tek başına", value: "≈ 7 galibiyet", note: "Liverpool'u 1–0, Inter Milan'ı 1–0 yendi" },
-      { period: "1976–1984", label: "Diğer tüm Türk kulüpleri", value: "≈ 6 galibiyet", note: "Toplam" }
-    ]
-  },
-
-  whyTRINote: {
-    en: "Trabzonspor — a club from outside Istanbul — single-handedly outperformed every other Turkish club in European competition during their era. That is what a benchmark looks like.",
-    tr: "Trabzonspor — İstanbul dışından bir kulüp — kendi döneminde diğer tüm Türk kulüplerini tek başına geçti. İşte kıstas bu demek."
-  },
-
   // Bold line
   boldLine: {
     en: "Not every champion changes football history.",
