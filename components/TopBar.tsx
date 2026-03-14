@@ -73,16 +73,6 @@ const euroWins: {
     }
   },
   {
-    opponent: "FC Barcelona",
-    competition: { tr: "Avrupa Şampiyon Kulüpler Kupası", en: "European Champion Clubs' Cup" },
-    season: "1990–91",
-    score: "1–0",
-    note: {
-      tr: "Barcelona'yı mağlup eden ilk Türk takımı",
-      en: "First Turkish club to defeat FC Barcelona"
-    }
-  },
-  {
     opponent: "Inter Milan",
     competition: { tr: "UEFA Kupası", en: "UEFA Cup" },
     season: "1983–84",
@@ -91,6 +81,41 @@ const euroWins: {
       tr: "Inter'i yenen ilk Türk kulüplerinden biri",
       en: "One of the first Turkish clubs to defeat Inter Milan"
     }
+  },
+  {
+    opponent: "FC Barcelona",
+    competition: { tr: "Avrupa Şampiyon Kulüpler Kupası", en: "European Champion Clubs' Cup" },
+    season: "1990–91",
+    score: "1–0",
+    note: {
+      tr: "Barcelona'yı mağlup eden ilk Türk takımı",
+      en: "First Turkish club to defeat FC Barcelona"
+    }
+  },  
+];
+
+/* European win comparison stats */
+const euroStats: { period: string; label: { tr: string; en: string }; value: string; note: { tr: string; en: string }; highlight: boolean }[] = [
+  {
+    period: "1956–1974",
+    label: { tr: "Tüm Türk kulüpleri toplamı", en: "All Turkish clubs combined" },
+    value: "≈ 14",
+    note: { tr: "18 yıllık Avrupa futbolu", en: "18 years of European football" },
+    highlight: false
+  },
+  {
+    period: "1976–1984",
+    label: { tr: "Trabzonspor tek başına", en: "Trabzonspor alone" },
+    value: "≈ 7",
+    note: { tr: "Liverpool 1–0, Inter Milan 1–0", en: "Liverpool 1–0, Inter Milan 1–0" },
+    highlight: true
+  },
+  {
+    period: "1976–1984",
+    label: { tr: "Diğer tüm Türk kulüpleri toplamı", en: "All other Turkish clubs combined" },
+    value: "≈ 6",
+    note: { tr: "Aynı dönem toplam", en: "Same period total" },
+    highlight: false
   },
 ];
 
@@ -126,7 +151,7 @@ const allTitles: { season: string }[] = [
 ──────────────────────────────────────────────── */
 const t = {
   modalTitle:    { tr: "Trabzonspor'u Tanıyalım",          en: "Meet Trabzonspor"                  },
-  modalSub:      { tr: "Bir Anadolu Devrimi",               en: "An Anatolian Revolution"            },
+  modalSub:      { tr: "BİR ANADOLU DEVRİMİ",               en: "An Anatolian Revolution"            },
 
   introTitle:    { tr: "Bu Endeks Neden Var?",               en: "Why Does This Index Exist?"         },
   introBody:     {
@@ -158,7 +183,7 @@ const t = {
   cupTurkish:    { tr: "Türkiye Kupası",                     en: "Turkish Cup"                        },
   cupPresid:     { tr: "Cumhurbaşkanlığı Kupası (Süper Kupa)", en: "Presidential Cup (Super Cup)"    },
 
-  sec5Title:     { tr: "1984 İtibarıyla Toplam Lig Şampiyonlukları", en: "All-Time League Titles as of 1984" },
+  sec5Title:     { tr: "1984 İTİBARIYLA TOPLAM LİG ŞAMPİYONLUKLARI", en: "All-Time League Titles as of 1984" },
   sec5Body:      {
     tr: "1984 sezonu sonunda Türkiye ligi tarihindeki toplam sıralama — Trabzonspor yalnızca 10 yılda köklü İstanbul kulüpleriyle aynı seviyeye ulaşmıştı:",
     en: "After the 1984 season, the all-time standings — Trabzonspor had reached the same level as Istanbul's most historic clubs in just 10 years:"
@@ -170,12 +195,24 @@ const t = {
   },
 
   secEuroTitle:  {
-    tr: "Avrupa Devlerine Karşı Tarihi Galibiyetler (1976–1984)",
-    en: "Historic Wins Against European Giants (1976–1984)"
+    tr: "Avrupa Başarıları",
+    en: "European Success"
+  },
+  secEuroWinsLabel: {
+    tr: "Avrupa Devlerine Karşı Tarihi Galibiyetler",
+    en: "Historic Wins Against European Giants"
   },
   secEuroBody:   {
     tr: "Bu dönemde İstanbul'un büyük kulüpleri Avrupa'da bu galibiyetleri elde edemezken, Trabzonspor kıtanın en güçlü takımlarını yendi ve Türk futbolunda ilkler yaşandı:",
     en: "While Istanbul's major clubs could not achieve such results in Europe at the time, Trabzonspor defeated the continent's strongest sides — setting multiple firsts for Turkish football:"
+  },
+  secEuroStatsTitle: {
+    tr: "AVRUPA GALİBİYETLERİ KARŞILAŞTIRMASI",
+    en: "European Wins Comparison"
+  },
+  secEuroStatsNote: {
+    tr: "Trabzonspor, üst lige ilk çıktığı dönemde diğer tüm Türk kulüplerini tek başına geçti.",
+    en: "Trabzonspor single-handedly surpassed all other Turkish clubs during their initial promotion to the top league."
   },
 
   secAfterTitle: { tr: "1984 Sonrası: Rekabetin Devamı",   en: "After 1984: Continued Competition"  },
@@ -207,7 +244,7 @@ const t = {
     en: "Trabzonspor finished the 2021–22 season as dominant leaders, showing consistent form throughout and clinching the title weeks early."
   },
 
-  allTitlesTitle: { tr: "Trabzonspor Süper Lig Şampiyonlukları — Toplam 8", en: "Trabzonspor Süper Lig Championships — 8 in Total" },
+  allTitlesTitle: { tr: "TRABZONSPOR SÜPER LİG ŞAMPİYONLUKLARI — Toplam 8", en: "Trabzonspor Süper Lig Championships — 8 in Total" },
   allTitlesSeason:{ tr: "Sezon",       en: "Season"      },
   allTitlesOrder: { tr: "Sıra",        en: "#"           },
 
@@ -494,6 +531,43 @@ export default function TopBar({ lang, setLang }: Props) {
                 <p style={{ margin: "0 0 14px", color: "#444", lineHeight: 1.7, fontSize: "0.9rem" }}>
                   {t.secEuroBody[lang]}
                 </p>
+
+                {/* Comparison stats */}
+                <div style={{ marginBottom: 16 }}>
+                  <div style={{ fontSize: "0.72rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.08em", color: "#999", marginBottom: 8 }}>
+                    {t.secEuroStatsTitle[lang]}
+                  </div>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                    {euroStats.map((row, i) => (
+                      <div key={i} style={{
+                        display: "flex", alignItems: "center", gap: 12,
+                        background: row.highlight ? `${TS.bordeaux}10` : "#f5f5f5",
+                        border: row.highlight ? `1.5px solid ${TS.bordeaux}40` : "1.5px solid #e8e8e8",
+                        borderRadius: 7, padding: "10px 12px"
+                      }}>
+                        <span style={{ fontSize: "0.7rem", fontWeight: 700, color: TS.blue, minWidth: 68, letterSpacing: "0.04em" }}>
+                          {row.period}
+                        </span>
+                        <div style={{ flex: 1 }}>
+                          <div style={{ fontSize: "0.85rem", fontWeight: row.highlight ? 700 : 400, color: row.highlight ? TS.bordeaux : "#444" }}>
+                            {row.label[lang]}
+                          </div>
+                          <div style={{ fontSize: "0.75rem", color: "#999", marginTop: 1 }}>{row.note[lang]}</div>
+                        </div>
+                        <span style={{ fontSize: "1.05rem", fontWeight: 800, color: row.highlight ? TS.bordeaux : "#777", whiteSpace: "nowrap" }}>
+                          {row.value} {lang === "tr" ? "galibiyet" : "wins"}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                  <p style={{ margin: "8px 0 0", fontSize: "0.8rem", color: "#666", fontStyle: "italic", lineHeight: 1.55 }}>
+                    {t.secEuroStatsNote[lang]}
+                  </p>
+                </div>
+
+                <div style={{ fontSize: "0.72rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.08em", color: "#999", marginBottom: 8 }}>
+                  {t.secEuroWinsLabel[lang]}
+                </div>
                 <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                   {euroWins.map((w, i) => <EuroCard key={i} win={w} lang={lang} i={i} />)}
                 </div>

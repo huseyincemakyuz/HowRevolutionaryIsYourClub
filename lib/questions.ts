@@ -142,12 +142,12 @@ export const questions: Question[] = [
     id: 11,
     category: "europe",
     text: {
-      tr: "Takımınız Avrupa kupalarında büyük futbol devlerine karşı unutulmaz galibiyetler aldı mı?",
-      en: "Has your club achieved memorable victories against major European giants?"
+      tr: "Avrupa kupalarında, Avrupa'nın geleneksel elit kulüpleri arasında sayılmadan önemli başarılar elde ettiniz mi?",
+      en: "Did your club achieve significant European success without being part of the traditional European elite?"
     },
     options: [
-      { label: { tr: "Evet, birden fazla kez", en: "Yes, multiple times" }, value: 5 },
-      { label: { tr: "Bir kez", en: "Once" }, value: 3 },
+      { label: { tr: "Evet, elitlerden biri değildik", en: "Yes, we weren't part of the elite" }, value: 5 },
+      { label: { tr: "Kısmen, bazı iyi sonuçlar aldık", en: "Partially, we had some good runs" }, value: 3 },
       { label: { tr: "Hayır", en: "No" }, value: 0 }
     ]
   },
@@ -155,13 +155,13 @@ export const questions: Question[] = [
     id: 12,
     category: "europe",
     text: {
-      tr: "Bu Avrupa başarıları, ülkenizdeki daha zengin veya daha büyük kulüplerden önce mi geldi?",
-      en: "Did these European successes come before the traditionally richer or bigger clubs in your country?"
+      tr: "Avrupa başarılarınız, ülkenizin geleneksel büyük kulüplerinin hiç ulaşamadığı veya çok sonra ulaşabildiği bir düzeyde miydi?",
+      en: "Did your club reach a level in Europe that the traditionally bigger clubs in your country had never reached, or only reached much later?"
     },
     options: [
-      { label: { tr: "Evet, öncü olduk", en: "Yes, we were pioneers" }, value: 5 },
-      { label: { tr: "Eş zamanlıydı", en: "Around the same time" }, value: 2 },
-      { label: { tr: "Hayır, sonra geldi", en: "No, they came after" }, value: 0 }
+      { label: { tr: "Evet, onların ulaşamadığı yere ulaştık", en: "Yes, we reached where they couldn't" }, value: 5 },
+      { label: { tr: "Kısmen, biraz ileriydik", en: "Partially, we were slightly ahead" }, value: 2 },
+      { label: { tr: "Hayır", en: "No" }, value: 0 }
     ]
   }
 ];
