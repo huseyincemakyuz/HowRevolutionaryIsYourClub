@@ -61,23 +61,23 @@ export function getLevel(score: number): Level {
 
   if (score >= 21) return {
     name: {
-      en: "Regional Challenger",
-      tr: "Bölgesel Meydan Okuyucu"
+      en: "Established Power",
+      tr: "Köklü Güç"
     },
     description: {
-      en: "Your club dared to challenge the system, but the structural barriers proved too strong.",
-      tr: "Kulübünüz sisteme meydan okumaya cesaret etti, ancak yapısal engeller çok güçlü çıktı."
+      en: "A respected and established club — but this index measures disruption, not tradition.",
+      tr: "Köklü ve saygın bir kulüp — ama bu indeks köklere değil, kırılımlara bakar."
     }
   };
 
   return {
     name: {
-      en: "Local Spirit",
-      tr: "Yerel Ruh"
+      en: "The Status Quo",
+      tr: "Statüko"
     },
     description: {
-      en: "Your club's story is built on local pride rather than systemic revolution.",
-      tr: "Kulübünüzün hikayesi sistemik devrimden çok yerel gurur üzerine inşa edilmiştir."
+      en: "Your club isn't against the system — your club is what others have to change against.",
+      tr: "Kulübünüz sisteme karşı değil — kulübünüz başkalarının değiştirmek zorunda olduğu sistemin ta kendisi."
     }
   };
 }

@@ -142,12 +142,12 @@ export const questions: Question[] = [
     id: 11,
     category: "europe",
     text: {
-      tr: "Takımınız Avrupa kupalarında büyük futbol devlerine karşı unutulmaz galibiyetler aldı mı?",
-      en: "Has your club achieved memorable victories against major European giants?"
+      tr: "Avrupa kupalarında, Avrupa'nın geleneksel elit kulüpleri arasında sayılmadan önemli başarılar elde ettiniz mi?",
+      en: "Did your club achieve significant European success without being part of the traditional European elite?"
     },
     options: [
-      { label: { tr: "Evet, birden fazla kez", en: "Yes, multiple times" }, value: 5 },
-      { label: { tr: "Bir kez", en: "Once" }, value: 3 },
+      { label: { tr: "Evet, elitlerden biri değildik", en: "Yes, we weren't part of the elite" }, value: 5 },
+      { label: { tr: "Kısmen, bazı iyi sonuçlar aldık", en: "Partially, we had some good runs" }, value: 3 },
       { label: { tr: "Hayır", en: "No" }, value: 0 }
     ]
   },
