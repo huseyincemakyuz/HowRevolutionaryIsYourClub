@@ -635,6 +635,21 @@ export default function TopBar({ lang, setLang }: Props) {
                 </table>
               </div>
 
+              {/* Official website link */}
+              <a
+                href="https://www.trabzonspor.org.tr"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
+                  padding: "12px 20px", borderRadius: 8, textDecoration: "none",
+                  background: `linear-gradient(135deg, ${TS.bordeaux} 0%, ${TS.blue} 100%)`,
+                  color: "#fff", fontWeight: 700, fontSize: "0.9rem", letterSpacing: "0.03em"
+                }}
+              >
+                {lang === "tr" ? "Trabzonspor Resmi Web Sitesi →" : "Visit Trabzonspor Official Website →"}
+              </a>
+
             </div>
           </div>
         </div>
