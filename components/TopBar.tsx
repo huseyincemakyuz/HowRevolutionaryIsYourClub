@@ -195,8 +195,12 @@ const t = {
   },
 
   secEuroTitle:  {
-    tr: "AVRUPA DEVLERİNE KARŞI TARİHİ GALİBİYETLER (1976–1984)",
-    en: "Historic Wins Against European Giants (1976–1984)"
+    tr: "Avrupa Başarıları",
+    en: "European Success"
+  },
+  secEuroWinsLabel: {
+    tr: "Avrupa Devlerine Karşı Tarihi Galibiyetler",
+    en: "Historic Wins Against European Giants"
   },
   secEuroBody:   {
     tr: "Bu dönemde İstanbul'un büyük kulüpleri Avrupa'da bu galibiyetleri elde edemezken, Trabzonspor kıtanın en güçlü takımlarını yendi ve Türk futbolunda ilkler yaşandı:",
@@ -561,6 +565,9 @@ export default function TopBar({ lang, setLang }: Props) {
                   </p>
                 </div>
 
+                <div style={{ fontSize: "0.72rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.08em", color: "#999", marginBottom: 8 }}>
+                  {t.secEuroWinsLabel[lang]}
+                </div>
                 <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                   {euroWins.map((w, i) => <EuroCard key={i} win={w} lang={lang} i={i} />)}
                 </div>
