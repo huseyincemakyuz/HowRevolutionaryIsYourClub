@@ -39,20 +39,23 @@ A bilingual (TR/EN) Next.js quiz app powered by the **Trabzon Revolution Index (
 
 ### Screenshots
 
-<!-- SCREENSHOT 1: Home page -->
-![Home](screenshots/screenshot-home.png)
+**Home**
+![Home](screenshots/en-home.png)
 
-<!-- SCREENSHOT 2: Club name entry -->
-![Club Entry](screenshots/screenshot-club-entry.png)
+**Club Name Entry**
+![Club Entry](screenshots/en-club-entry.png)
 
-<!-- SCREENSHOT 3: Quiz question -->
-![Quiz](screenshots/screenshot-quiz.png)
+**Quiz Question**
+![Quiz](screenshots/en-quiz.png)
 
-<!-- SCREENSHOT 4: Result page -->
-![Result](screenshots/screenshot-result.png)
+**Result Page**
+![Result](screenshots/en-result.png)
 
-<!-- SCREENSHOT 5: Why TRI modal -->
-![Why TRI](screenshots/screenshot-why-tri.png)
+**Shareable Result Card**
+![Share Card](screenshots/en-share-card.png)
+
+**Why TRI? Modal**
+![Why TRI](screenshots/en-why-tri.png)
 
 ### Tech Stack
 
@@ -103,20 +106,23 @@ npm run dev
 
 ### Ekran Görüntüleri
 
-<!-- EKRAN GÖRÜNTÜSİ 1: Ana sayfa -->
-![Ana Sayfa](screenshots/screenshot-home.png)
+**Ana Sayfa**
+![Ana Sayfa](screenshots/tr-home.png)
 
-<!-- EKRAN GÖRÜNTÜSİ 2: Kulüp adı girişi -->
-![Kulüp Girişi](screenshots/screenshot-club-entry.png)
+**Kulüp Adı Girişi**
+![Kulüp Girişi](screenshots/tr-club-entry.png)
 
-<!-- EKRAN GÖRÜNTÜSİ 3: Soru ekranı -->
-![Quiz](screenshots/screenshot-quiz.png)
+**Soru Ekranı**
+![Quiz](screenshots/tr-quiz.png)
 
-<!-- EKRAN GÖRÜNTÜSİ 4: Sonuç sayfası -->
-![Sonuç](screenshots/screenshot-result.png)
+**Sonuç Sayfası**
+![Sonuç](screenshots/tr-result.png)
 
-<!-- EKRAN GÖRÜNTÜSİ 5: Neden TRI? modalı -->
-![Neden TRI](screenshots/screenshot-why-tri.png)
+**Paylaşılabilir Sonuç Kartı**
+![Paylaşım Kartı](screenshots/tr-share-card.png)
+
+**Neden TRI? Modalı**
+![Neden TRI](screenshots/tr-why-tri.png)
 
 ### Başlarken
 
