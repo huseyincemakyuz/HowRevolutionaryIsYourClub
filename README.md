@@ -1,5 +1,7 @@
 # How Revolutionary Is Your Football Club?
 
+🌐 **https://howrevolutionaryisyourclub.com**
+
 > **TR:** Futbol kulübünün ne kadar devrimci olduğunu ölç — kupalarla değil, güç dengelerini nasıl değiştirdiğinle.
 >
 > **EN:** Measure how revolutionary your football club really is — not by trophies, but by how it changes the balance of power.
