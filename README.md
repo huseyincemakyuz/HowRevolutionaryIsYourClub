@@ -40,22 +40,22 @@ A bilingual (TR/EN) Next.js quiz app powered by the **Trabzon Revolution Index (
 ### Screenshots
 
 **Home**
-![Home](screenshots/en-home.png)
+![Home](screenshots/Home.png)
 
 **Club Name Entry**
-![Club Entry](screenshots/en-club-entry.png)
+![Club Entry](screenshots/ClubEntry.png)
 
 **Quiz Question**
-![Quiz](screenshots/en-quiz.png)
+![Quiz](screenshots/Quiz.png)
 
 **Result Page**
-![Result](screenshots/en-result.png)
+![Result](screenshots/Result.png)
 
 **Shareable Result Card**
-![Share Card](screenshots/en-share-card.png)
+![Share Card](screenshots/SharePng.png)
 
 **Why TRI? Modal**
-![Why TRI](screenshots/en-why-tri.png)
+![Why TRI](screenshots/WhyTri.png)
 
 ### Tech Stack
 
@@ -107,22 +107,22 @@ npm run dev
 ### Ekran Görüntüleri
 
 **Ana Sayfa**
-![Ana Sayfa](screenshots/tr-home.png)
+![Ana Sayfa](screenshots/AnaSayfa.png)
 
 **Kulüp Adı Girişi**
-![Kulüp Girişi](screenshots/tr-club-entry.png)
+![Kulüp Girişi](screenshots/KulupGirisi.png)
 
 **Soru Ekranı**
-![Quiz](screenshots/tr-quiz.png)
+![Quiz](screenshots/QuizTr.png)
 
 **Sonuç Sayfası**
-![Sonuç](screenshots/tr-result.png)
+![Sonuç](screenshots/Sonuc.png)
 
 **Paylaşılabilir Sonuç Kartı**
-![Paylaşım Kartı](screenshots/tr-share-card.png)
+![Paylaşım Kartı](screenshots/PaylasEkranGoruntusu.png)
 
 **Neden TRI? Modalı**
-![Neden TRI](screenshots/tr-why-tri.png)
+![Neden TRI](screenshots/NedenTri.png)
 
 ### Başlarken
 
