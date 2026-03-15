@@ -14,11 +14,11 @@ interface Props {
    Static data
 ──────────────────────────────────────────────── */
 
-const hegemony1959: { club: { tr: string; en: string }; titles: number }[] = [
-  { club: { tr: "Fenerbahçe",        en: "Fenerbahçe"       }, titles: 9 },
-  { club: { tr: "Galatasaray",       en: "Galatasaray"      }, titles: 6 },
-  { club: { tr: "Beşiktaş",         en: "Beşiktaş"         }, titles: 5 },
-  { club: { tr: "Anadolu Kulüpleri", en: "Anatolian Clubs"  }, titles: 0 },
+const hegemony1959: { club: { tr: string; en: string }; titles: number; isTS: boolean }[] = [
+  { club: { tr: "Fenerbahçe",        en: "Fenerbahçe"       }, titles: 9, isTS: false },
+  { club: { tr: "Galatasaray",       en: "Galatasaray"      }, titles: 6, isTS: false },
+  { club: { tr: "Beşiktaş",         en: "Beşiktaş"         }, titles: 5, isTS: false },
+  { club: { tr: "Anadolu Kulüpleri", en: "Anatolian Clubs"  }, titles: 0, isTS: false },
 ];
 
 const seasons1976: { season: string; champion: { tr: string; en: string }; isTS: boolean }[] = [
