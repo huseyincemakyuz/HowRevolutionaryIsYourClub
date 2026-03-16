@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
 
   try {
     const { env } = await getCloudflareContext({ async: true });
-    const ae = (env as Record<string, AnalyticsEngineDataset>)["AE"];
+    const ae = (env as Record<string, { writeDataPoint: (data: { blobs?: string[]; doubles?: number[]; indexes?: string[] }) => void } | undefined>)["AE"];
     if (ae) {
       ae.writeDataPoint({
         blobs: [club.slice(0, 100), lang ?? "en"],
