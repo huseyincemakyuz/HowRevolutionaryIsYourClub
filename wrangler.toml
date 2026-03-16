@@ -11,3 +11,7 @@ directory = ".open-next/assets"
 
 [placement]
 mode = "smart"
+
+[[analytics_engine_datasets]]
+binding = "AE"
+dataset = "club_tracks"
