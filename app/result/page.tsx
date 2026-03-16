@@ -42,7 +42,18 @@ export default function Result() {
 
     const categoryScores: CategoryScores = { hegemony: 0, rise: 0, sustain: 0, europe: 0 }
     questions.forEach(q => { categoryScores[q.category] += answers[q.id] || 0 })
-    setResult(calculateScore(categoryScores))
+    const scoreResult = calculateScore(categoryScores)
+    setResult(scoreResult)
+
+    fetch("/api/track", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        club: storedClub ?? "",
+        score: scoreResult.total,
+        lang: storedLang ?? "en",
+      }),
+    }).catch(() => {})
   }, [])
 
   const handleSetLang = (l: Language) => {
