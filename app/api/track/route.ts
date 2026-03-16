@@ -1,4 +1,4 @@
-import { getRequestContext } from "@opennextjs/cloudflare";
+import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { NextRequest, NextResponse } from "next/server";
 
 interface TrackBody {
@@ -21,8 +21,8 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    const ctx = getRequestContext();
-    const ae = (ctx.env as Record<string, AnalyticsEngineDataset>)["AE"];
+    const { env } = await getCloudflareContext({ async: true });
+    const ae = (env as Record<string, { writeDataPoint: (data: { blobs?: string[]; doubles?: number[]; indexes?: string[] }) => void } | undefined>)["AE"];
     if (ae) {
       ae.writeDataPoint({
         blobs: [club.slice(0, 100), lang ?? "en"],
