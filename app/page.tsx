@@ -7,6 +7,7 @@ import TopBar from "@/components/TopBar";
 import Footer from "@/components/Footer";
 import { TS } from "@/lib/colors";
 import { Language } from "@/types";
+import { exampleClubs } from "@/lib/exampleClubs";
 
 const BAR_HEIGHT = 48;
 
@@ -124,6 +125,102 @@ export default function Home() {
               </span>
             </div>
           ))}
+        </div>
+
+        <hr style={{ border: "none", borderTop: `2px solid ${TS.bordeaux}`, opacity: 0.15, marginBottom: 40 }} />
+
+        {/* Example clubs */}
+        <p style={{ margin: "0 0 6px", fontWeight: 700, color: "#222" }}>
+          {lang === "tr" ? "Referans Kulüpler" : "Reference Clubs"}
+        </p>
+        <p style={{ margin: "0 0 20px", fontSize: "0.88rem", color: "#666", lineHeight: 1.6 }}>
+          {lang === "tr"
+            ? "TRI modeliyle hesaplanmış tarihsel devrimci kulüpler. Kulübünüzü kıyaslamak için bir referans noktası."
+            : "Historically revolutionary clubs scored with the TRI model — a reference point to compare your club against."}
+        </p>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 12, marginBottom: 40 }}>
+          {exampleClubs.map(club => {
+            const score = club.total;
+            const color = score === 100 ? TS.bordeaux
+              : score >= 81 ? "#B5451B"
+              : score >= 61 ? TS.blue
+              : TS.gold;
+            const tierName = score === 100
+              ? (lang === "tr" ? "Kıstas (TRI)" : "The Benchmark (TRI)")
+              : score >= 90
+              ? (lang === "tr" ? "Trabzon Çaplı Devrim" : "Trabzon-Level Revolution")
+              : score >= 81
+              ? (lang === "tr" ? "Güçlü Devrim" : "Strong Revolution")
+              : score >= 61
+              ? (lang === "tr" ? "Hegemonya Kırıcı" : "Hegemony Breaker")
+              : score >= 41
+              ? (lang === "tr" ? "Lig Bozucu" : "League Disruptor")
+              : (lang === "tr" ? "Köklü Güç" : "Established Power");
+
+            const catLabels: Record<string, { tr: string; en: string }> = {
+              hegemony: { tr: "Hegemonya", en: "Hegemony" },
+              rise:     { tr: "Yükseliş",  en: "Rise"     },
+              sustain:  { tr: "Süreklilik",en: "Sustain"  },
+              europe:   { tr: "Avrupa",    en: "Europe"   },
+            };
+            const catColors: Record<string, string> = {
+              hegemony: TS.bordeaux,
+              rise:     TS.blue,
+              sustain:  TS.gold,
+              europe:   "#6B9E6B",
+            };
+
+            return (
+              <div key={club.name} style={{
+                background: "#fff",
+                border: `1.5px solid ${color}30`,
+                borderLeft: `4px solid ${color}`,
+                borderRadius: 8,
+                padding: "14px 16px",
+              }}>
+                {/* Header */}
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 10 }}>
+                  <div>
+                    <div style={{ fontWeight: 800, fontSize: "0.97rem", color: "#111" }}>{club.name}</div>
+                    <div style={{ fontSize: "0.75rem", color: "#888", marginTop: 2 }}>
+                      {club.league[lang]} · {club.era} · {club.country}
+                    </div>
+                  </div>
+                  <div style={{ textAlign: "right", flexShrink: 0, marginLeft: 12 }}>
+                    <div style={{ fontSize: "1.6rem", fontWeight: 800, color, lineHeight: 1 }}>{score}</div>
+                    <div style={{ fontSize: "0.68rem", fontWeight: 700, color, marginTop: 2 }}>{tierName}</div>
+                  </div>
+                </div>
+
+                {/* Note */}
+                <p style={{ margin: "0 0 12px", fontSize: "0.8rem", color: "#555", lineHeight: 1.55 }}>
+                  {club.note[lang]}
+                </p>
+
+                {/* Category bars */}
+                <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
+                  {(["hegemony", "rise", "sustain", "europe"] as const).map(cat => (
+                    <div key={cat} style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                      <span style={{ fontSize: "0.68rem", color: "#999", minWidth: 58 }}>
+                        {catLabels[cat][lang]}
+                      </span>
+                      <div style={{ flex: 1, height: 4, background: "#eee", borderRadius: 99 }}>
+                        <div style={{
+                          height: "100%",
+                          width: `${club.breakdown[cat].normalized}%`,
+                          background: catColors[cat],
+                          borderRadius: 99
+                        }} />
+                      </div>
+                      <span style={{ fontSize: "0.68rem", color: "#aaa", minWidth: 28, textAlign: "right" }}>
+                        {club.breakdown[cat].normalized}%
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
         </div>
 
         <hr style={{ border: "none", borderTop: `2px solid ${TS.bordeaux}`, opacity: 0.15, marginBottom: 40 }} />
