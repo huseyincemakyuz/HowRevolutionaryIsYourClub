@@ -362,8 +362,10 @@ export default function TopBar({ lang, setLang }: Props) {
 
         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
           <Link href="/about" style={{
-            color: "rgba(255,255,255,0.8)", fontSize: "0.75rem", fontWeight: 700,
-            letterSpacing: "0.05em", whiteSpace: "nowrap", textDecoration: "none"
+            color: "rgba(255,255,255,0.85)", fontSize: "0.75rem", fontWeight: 700,
+            letterSpacing: "0.05em", whiteSpace: "nowrap", textDecoration: "none",
+            border: "1.5px solid rgba(255,255,255,0.3)", borderRadius: 99,
+            padding: "4px 13px"
           }}>
             {lang === "tr" ? "Model" : "About"}
           </Link>
