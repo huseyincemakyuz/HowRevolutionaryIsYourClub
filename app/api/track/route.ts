@@ -1,4 +1,3 @@
-import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { NextRequest, NextResponse } from "next/server";
 
 interface TrackBody {
@@ -21,6 +20,7 @@ export async function POST(req: NextRequest) {
   }
 
   try {
+    const { getCloudflareContext } = await import(/* webpackIgnore: true */ "@opennextjs/cloudflare");
     const { env } = await getCloudflareContext({ async: true });
     const ae = (env as Record<string, { writeDataPoint: (data: { blobs?: string[]; doubles?: number[]; indexes?: string[] }) => void } | undefined>)["AE"];
     if (ae) {
